@@ -94,7 +94,7 @@ export const examplesPersonal: ProjectCardProps[] = [
       },
       "Frontend Development": {
         description: "Need to write one",
-        skills: ["Re", "PostgreSQL", "Python", "Docker"],
+        skills: ["React", "PostgreSQL", "Python", "Docker"],
         gits: [],
       },
     },

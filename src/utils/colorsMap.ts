@@ -10,6 +10,7 @@ export const groupColorMap: GroupColorMap = {
     Python: "Programming and Development",
     Django: "Programming and Development",
     FastApi: "Programming and Development",
+    React: "Programming and Development",
     "Chakra UI": "Programming and Development",
     TypeScript: "Programming and Development",
     NextJS: "Programming and Development",
