@@ -46,6 +46,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
                   justify={"space-between"}
                   gap={4}
                   key={skill}
+                  fontWeight={{
+                    base: "300",
+                    sm: "300",
+                    md: "300",
+                    lg: "300",
+                    xl: "300",
+                    "2xl": "400",
+                  }}
                   fontSize={{
                     base: "16px",
                     sm: "16px",

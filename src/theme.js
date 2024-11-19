@@ -29,7 +29,7 @@ const poppins = Poppins({
 const khula = Khula({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400"],
+  weight: ["300", "400", "600"],
 });
 
 
