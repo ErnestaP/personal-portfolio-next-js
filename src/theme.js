@@ -4,7 +4,7 @@ import {
   defineConfig,
   defineStyle,
 } from "@chakra-ui/react";
-import { MuseoModerno, Poppins } from "next/font/google";
+import { MuseoModerno, Poppins, Khula } from "next/font/google";
 
 const museoModerno = MuseoModerno({
   subsets: ["latin"],
@@ -16,6 +16,12 @@ const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
   weight: ["100"],
+});
+
+const khula = Khula({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
 });
 
 const buttonTheme = defineStyle({
@@ -54,6 +60,7 @@ const customConfig = defineConfig({
       },
       fonts: {
         initialTitle: { value: poppins.style.fontFamily },
+        cardFont: { value: khula.style.fontFamily },
       },
       fontSizes: {
         smallTitle: "2.4rem",

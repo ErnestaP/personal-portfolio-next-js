@@ -9,7 +9,8 @@ import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
-  console.log(pathname);
+  const basePage = pathname.split("/")[1];
+
   return (
     <HStack p={4} justify="flex-end">
       <Link href="/">
@@ -29,7 +30,7 @@ export default function Header() {
           Home
         </Button>
       </Link>
-      <Link href="/projects">
+      <Link href="/projects/professional">
         <Button
           fontSize={{
             sm: "sm",
@@ -40,8 +41,8 @@ export default function Header() {
           }}
           fontWeight="light"
           variant="plain"
-          color={pathname == "/projects" ? "secondary" : "default"}
-          _dark={{ color: pathname == "/projects" ? "#EFC946" : "default" }}
+          color={basePage == "projects" ? "secondary" : "default"}
+          _dark={{ color: basePage == "projects" ? "#EFC946" : "default" }}
         >
           Projects
         </Button>
