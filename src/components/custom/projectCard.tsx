@@ -17,15 +17,13 @@ import { FaGithub } from "react-icons/fa";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
   return (
-    <Stack align={"start"}>
-      <Card.Root size="sm" fontFamily="cardFont">
+    <Stack align={"start"}  width={"-webkit-fill-available"}>
+      <Card.Root size="sm" fontFamily="cardFont" width={"100%"}>
         <Card.Header>
           <Heading size="md">{title}</Heading>
         </Card.Header>
         <Card.Body color="fg.muted">
-          <HStack>
-            <Box fontWeight={600}>Role: {role}</Box>
-          </HStack>
+          <HStack>{role && <Box fontWeight={600}>Role: {role}</Box>}</HStack>
           <Flex
             direction={{
               base: "column",

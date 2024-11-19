@@ -9,13 +9,16 @@ export const groupColorMap: GroupColorMap = {
   const skillToGroupMap: SkillToGroupMap = {
     Python: "Programming and Development",
     Django: "Programming and Development",
+    FastApi: "Programming and Development",
     TypeScript: "Programming and Development",
     NextJS: "Programming and Development",
+    VueJS: "Programming and Development",
     StyledComponents: "Programming and Development",
     AntDesign: "Programming and Development",
     "Apache Airflow": "Data and Workflow Automation",
     Docker: "Data and Workflow Automation",
-    PostgreSQL: "Data and Workflow Automation",
+    PostgreSQL: "Programming and Development",
+    Firebase: "Programming and Development",
     Pytest: "Data and Workflow Automation",
     OpenSearch: "Data Analysis and Visualization",
     "Apache Superset": "Data Analysis and Visualization",
@@ -28,6 +31,7 @@ export const groupColorMap: GroupColorMap = {
     Collaboration: "Communication and Collaboration",
     "Presentation Skills": "Communication and Collaboration",
   };
+
 
   export function getColorBySkill(skill: string): string | null {
     const group = skillToGroupMap[skill];
