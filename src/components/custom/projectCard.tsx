@@ -17,7 +17,7 @@ import { FaGithub } from "react-icons/fa";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
   return (
-    <Stack align={"start"}  width={"-webkit-fill-available"}>
+    <Stack align={"start"} width={"-webkit-fill-available"}>
       <Card.Root size="sm" fontFamily="cardFont" width={"100%"}>
         <Card.Header>
           <Heading size="md">{title}</Heading>
@@ -46,6 +46,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
                   justify={"space-between"}
                   gap={4}
                   key={skill}
+                  fontSize={{
+                    base: "16px",
+                    sm: "16px",
+                    md: "16px",
+                    lg: "16px",
+                    xl: "18px",
+                    "2xl": "18px",
+                  }}
                 >
                   <VStack align={"baseline"} gap={2}>
                     <HStack align={"center"}>
@@ -67,7 +75,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
                     {skillSet[skill].skills.map((skill) => (
                       <Box>
                         <Tag
-                          size="sm"
+                          size={{
+                            base: "sm",
+                            sm: "sm",
+                            md: "sm",
+                            lg: "sm",
+                            xl: "lg",
+                            "2xl": "xl",
+                          }}
+                          width={"max-content"}
                           colorPalette={getColorBySkill(skill) || "transparent"}
                         >
                           {skill}

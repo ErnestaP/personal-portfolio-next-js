@@ -6,9 +6,51 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
-export default function SideMenu() {
+export function SideMenuButtons() {
   const pathname = usePathname();
   const currentPage = pathname.split("/").slice(-1)[0];
+  const fontSize = {
+    base: "16px",
+    md: "md",
+    lg: "lg",
+    xl: "xl",
+    "2xl": "2xl",
+  };
+  return (
+    <>
+      <Box>
+        <Link href="/projects/professional">
+          <Button
+            fontSize={fontSize}
+            fontWeight="light"
+            variant="plain"
+            color={currentPage == "professional" ? "secondary" : "default"}
+            _dark={{
+              color: currentPage == "professional" ? "#EFC946" : "default",
+            }}
+          >
+            Professional
+          </Button>
+        </Link>
+      </Box>
+      <Box>
+        <Link href="/projects/personal">
+          <Button
+            fontSize={fontSize}
+            fontWeight="light"
+            variant="plain"
+            color={currentPage == "personal" ? "secondary" : "default"}
+            _dark={{ color: currentPage == "personal" ? "#EFC946" : "default" }}
+          >
+            Personal
+          </Button>
+        </Link>
+      </Box>
+    </>
+  );
+}
+
+export function SideMenu() {
   const { resolvedTheme } = useTheme();
   const pictureSrc =
     resolvedTheme === "light"
@@ -32,46 +74,7 @@ export default function SideMenu() {
       width="auto"
       borderRadius={8}
     >
-      <Box>
-        <Link href="/projects/professional">
-          <Button
-            fontSize={{
-              sm: "sm",
-              md: "md",
-              lg: "lg",
-              xl: "xl",
-              "2xl": "2xl",
-            }}
-            fontWeight="light"
-            variant="plain"
-            color={currentPage == "professional" ? "secondary" : "default"}
-            _dark={{
-              color: currentPage == "professional" ? "#EFC946" : "default",
-            }}
-          >
-            Professional
-          </Button>
-        </Link>
-      </Box>
-      <Box>
-        <Link href="/projects/personal">
-          <Button
-            fontSize={{
-              sm: "sm",
-              md: "md",
-              lg: "lg",
-              xl: "xl",
-              "2xl": "2xl",
-            }}
-            fontWeight="light"
-            variant="plain"
-            color={currentPage == "personal" ? "secondary" : "default"}
-            _dark={{ color: currentPage == "personal" ? "#EFC946" : "default" }}
-          >
-            Personal
-          </Button>
-        </Link>
-      </Box>
+      <SideMenuButtons />
     </VStack>
   );
 }

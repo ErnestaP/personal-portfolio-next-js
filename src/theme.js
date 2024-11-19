@@ -6,6 +6,14 @@ import {
 } from "@chakra-ui/react";
 import { MuseoModerno, Poppins, Khula } from "next/font/google";
 
+const responsiveFontSizes = {
+  smallTitle: ["2rem", "2.4rem", "3rem"], // [base, md, lg]
+  mediumTitle: ["2.5rem", "3.125rem", "3.5rem"], // [base, md, lg]
+  largeTitle: ["3rem", "3.75rem", "4.5rem"], // [base, md, lg]
+  extraLargeTitle: ["4rem", "5rem", "6rem"], // [base, md, lg]
+  extraExtraLargeTitle: ["6rem", "7.5rem", "9rem"], // [base, md, lg]
+};
+
 const museoModerno = MuseoModerno({
   subsets: ["latin"],
   display: "swap",
@@ -24,13 +32,6 @@ const khula = Khula({
   weight: ["400"],
 });
 
-const buttonTheme = defineStyle({
-  baseStyle: {
-    _hover: {
-      color: "red.500",
-    },
-  },
-});
 
 const customConfig = defineConfig({
   globalCss: {
@@ -49,9 +50,6 @@ const customConfig = defineConfig({
     body: museoModerno.style.fontFamily,
   },
   theme: {
-    components: {
-      Button: buttonTheme,
-    },
     tokens: {
       colors: {
         primary: { value: "#FFF" },
@@ -70,9 +68,6 @@ const customConfig = defineConfig({
         extraExtraLargeTitle: "7.5rem",
       },
     },
-  },
-  components: {
-    Button: buttonTheme,
   },
 });
 

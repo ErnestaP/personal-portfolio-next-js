@@ -4,6 +4,7 @@ import { Flex, Text, VStack } from "@chakra-ui/react";
 import Header from "@/components/custom/header";
 import { Provider } from "@/components/ui/provider";
 import SideBar from "@/components/custom/sideBar";
+import ContentLayout from "@/components/custom/contentLayout";
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
@@ -16,7 +17,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
             <Header />
             <Flex flex={1} overflow="hidden">
               <SideBar />
-              {children}
+              <ContentLayout>{children}</ContentLayout>
             </Flex>
             <VStack p={4} textAlign="center">
               <Text fontSize="sm">Ernesta Petraityte © 2024</Text>

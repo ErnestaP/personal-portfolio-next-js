@@ -10,18 +10,18 @@ import Link from "next/link";
 export default function Header() {
   const pathname = usePathname();
   const basePage = pathname.split("/")[1];
-
+  const fontSize = {
+    base: "16px",
+    md: "md",
+    lg: "lg",
+    xl: "xl",
+    "2xl": "2xl",
+  };
   return (
     <HStack p={4} justify="flex-end">
       <Link href="/">
         <Button
-          fontSize={{
-            sm: "sm",
-            md: "md",
-            lg: "lg",
-            xl: "xl",
-            "2xl": "2xl",
-          }}
+          fontSize={fontSize}
           fontWeight="light"
           variant="plain"
           color={pathname == "/" ? "secondary" : "default"}
@@ -32,13 +32,7 @@ export default function Header() {
       </Link>
       <Link href="/projects/professional">
         <Button
-          fontSize={{
-            sm: "sm",
-            md: "md",
-            lg: "lg",
-            xl: "xl",
-            "2xl": "2xl",
-          }}
+          fontSize={fontSize}
           fontWeight="light"
           variant="plain"
           color={basePage == "projects" ? "secondary" : "default"}
@@ -49,13 +43,7 @@ export default function Header() {
       </Link>
       <Link href="/about">
         <Button
-          fontSize={{
-            sm: "sm",
-            md: "md",
-            lg: "lg",
-            xl: "xl",
-            "2xl": "2xl",
-          }}
+          fontSize={fontSize}
           fontWeight="light"
           variant="plain"
           color={pathname == "/about" ? "secondary" : "default"}

@@ -30,6 +30,7 @@ interface SkillSet {
 
 interface ProjectCardProps {
   title: string;
+  employer?:string;
   role: string;
   skillSet: SkillSet;
 }
