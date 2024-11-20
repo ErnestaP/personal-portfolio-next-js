@@ -1,20 +1,52 @@
 "use client";
+
 import React from "react";
 import { usePathname } from "next/navigation";
 
-import { VStack, Stack, Box, Text, HStack, Flex } from "@chakra-ui/react";
+import { VStack, Box, Text, HStack, Flex } from "@chakra-ui/react";
 import { SideMenu, SideMenuButtons } from "@/components/custom/sideMenu";
-import ProjectCard from "@/components/custom/projectCard";
-import ColorMap from "@/components/custom/colorMap";
-import { examplesProfessional } from "@/utils/data";
 
 export default function ContentLayout(props: { children: React.ReactNode }) {
   const pathname = usePathname();
   const basePage = pathname.split("/")[1];
 
+  const sideMenuConfig: SideMenuConfigProps = {
+    projects: {
+      title: "Projects",
+      buttons: [
+        {
+          label: "Professional",
+          href: "/projects/professional",
+        },
+        {
+          label: "Personal",
+          href: "/projects/personal",
+        },
+      ],
+    },
+    about: {
+      title: "About Me",
+      buttons: [
+        {
+          label: "Experience",
+          href: "/about/experience",
+        },
+        {
+          label: "Education",
+          href: "/about/education",
+        },
+        {
+          label: "Hobbies",
+          href: "/about/hobbies",
+        },
+      ],
+    },
+  };
+  const currentPage =
+    basePage in sideMenuConfig ? sideMenuConfig[basePage] : null;
   return (
     <>
-      {basePage == "projects" ? (
+      {currentPage ? (
         <Flex gap={4} flexDir="column" width={"100%"} alignItems={"stretch"}>
           <HStack
             align={{
@@ -29,17 +61,18 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
             <VStack flex={1} align="center">
               <Box>
                 <Text
+                  textAlign={"center"}
                   fontSize={{
-                    base: "30px",
-                    sm: "30px",
+                    base: "25px",
+                    sm: "25px",
                     md: "30px",
-                    lg: "40px",
-                    xl: "40px",
+                    lg: "30px",
+                    xl: "35px",
                     "2xl": "40px",
                   }}
                   textDecoration="underline"
                 >
-                  PROJECTS
+                  {currentPage.title}
                 </Text>
               </Box>
               <HStack
@@ -52,7 +85,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                   "2xl": "none",
                 }}
               >
-                <SideMenuButtons />
+                <SideMenuButtons buttons={currentPage.buttons} />
               </HStack>
             </VStack>
             <Box
@@ -69,7 +102,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               Filler
             </Box>
           </HStack>
-          <HStack height={"100%"} align={"baseline"} p={4}>
+          <HStack height={"100%"} align={"start"}>
             <Box
               display={{
                 base: "none",
@@ -82,22 +115,17 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               flex={1}
               height={"100%"}
             >
-              <SideMenu />
+              <SideMenu buttons={currentPage.buttons} />
             </Box>
-            <HStack flex={6} align={"start"} height={"90%"} overflowY="auto">
-              <VStack width={"-webkit-fill-available"}>
-                {props.children}
-                <HStack
-                  flex={1}
-                  gap={4}
-                  p={2}
-                  paddingBottom={10}
-                  alignItems={"baseline"}
-                  alignSelf={"baseline"}
-                >
-                  <ColorMap />
-                </HStack>
-              </VStack>
+            <HStack
+              flex={6}
+              align={"start"}
+              height={"90%"}
+              overflowY="auto"
+              paddingBottom={{ base: 16, md: 16, lg: 8, xl: 8, "2xl": 8 }}
+              paddingRight={2}
+            >
+              <VStack width={"-webkit-fill-available"}>{props.children}</VStack>
             </HStack>
           </HStack>
         </Flex>

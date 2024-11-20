@@ -47,7 +47,7 @@ export default function Header() {
           fontWeight="light"
           variant="plain"
           color={pathname == "/about" ? "secondary" : "default"}
-          _dark={{ color: pathname == "/about" ? "#EFC946" : "default" }}
+          _dark={{ color: basePage == "about" ? "#EFC946" : "default" }}
         >
           About Me
         </Button>

@@ -77,7 +77,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
                         </Box>
                       ))}
                     </HStack>
-                    <Box>Description: {skillSet[skill].description}</Box>
+                    <Box>{skillSet[skill].description}</Box>
                   </VStack>
                   <HStack gap={2}>
                     {skillSet[skill].skills.map((skill) => (

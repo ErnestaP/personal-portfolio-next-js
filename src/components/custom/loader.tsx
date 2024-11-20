@@ -7,17 +7,17 @@ const SpiralSpinner = () => {
   return (
     <Flex
       align="center"
-      justify="center"
-      height="100vh"
-      width="100vw"
+      justify="start"
+      height="400px"
+      width="50vw"
       direction="column"
     >
       <Flex
         align="center"
         justify="center"
         position="relative"
-        width="500px"
-        height="500px"
+        width="300px"
+        height="300px"
         alignContent={"center"}
         css={{
           animation: "spin 3.5s linear infinite",
@@ -39,7 +39,7 @@ const SpiralSpinner = () => {
         ))}
       </Flex>
 
-      <Flex position="relative" mt={8}>
+      <Flex position="relative" mt={8} >
         {letters.split("").map((char, charIndex) => (
           <Box
             key={charIndex}

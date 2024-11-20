@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 
-import { Box } from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
 import ProjectCard from "@/components/custom/projectCard";
+import ColorMap from "@/components/custom/colorMap";
 import { examplesProfessional } from "@/utils/data";
+
 export default function Professional() {
   return (
     <>
@@ -16,6 +18,16 @@ export default function Professional() {
           />
         </Box>
       ))}
+      <HStack
+        flex={1}
+        gap={4}
+        p={2}
+        paddingBottom={10}
+        alignItems={"baseline"}
+        alignSelf={"baseline"}
+      >
+        <ColorMap />
+      </HStack>
     </>
   );
 }

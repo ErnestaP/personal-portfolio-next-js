@@ -6,9 +6,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
-export function SideMenuButtons() {
+export function SideMenuButtons(props: { buttons: SideMenuButtonsProps[] }) {
   const pathname = usePathname();
-  const currentPage = pathname.split("/").slice(-1)[0];
+
   const fontSize = {
     base: "16px",
     md: "md",
@@ -18,39 +18,28 @@ export function SideMenuButtons() {
   };
   return (
     <>
-      <Box>
-        <Link href="/projects/professional">
-          <Button
-            fontSize={fontSize}
-            fontWeight="light"
-            variant="plain"
-            color={currentPage == "professional" ? "secondary" : "default"}
-            _dark={{
-              color: currentPage == "professional" ? "#EFC946" : "default",
-            }}
-          >
-            Professional
-          </Button>
-        </Link>
-      </Box>
-      <Box>
-        <Link href="/projects/personal">
-          <Button
-            fontSize={fontSize}
-            fontWeight="light"
-            variant="plain"
-            color={currentPage == "personal" ? "secondary" : "default"}
-            _dark={{ color: currentPage == "personal" ? "#EFC946" : "default" }}
-          >
-            Personal
-          </Button>
-        </Link>
-      </Box>
+      {props.buttons.map((button) => (
+        <Box>
+          <Link href={button.href}>
+            <Button
+              fontSize={fontSize}
+              fontWeight="light"
+              variant="plain"
+              color={pathname == button.href ? "secondary" : "default"}
+              _dark={{
+                color: pathname == button.href ? "#EFC946" : "default",
+              }}
+            >
+              {button.label}
+            </Button>
+          </Link>
+        </Box>
+      ))}
     </>
   );
 }
 
-export function SideMenu() {
+export function SideMenu(props: { buttons: SideMenuButtonsProps[] }) {
   const { resolvedTheme } = useTheme();
   const pictureSrc =
     resolvedTheme === "light"
@@ -68,13 +57,13 @@ export function SideMenu() {
       backgroundColor={lightOrDarkBlend}
       backgroundBlendMode="overlay"
       backgroundSize="cover"
-      gap={5}
+      gap={{ base: "3", md: "3", lg: "5", xl: "5", "2xl": "5" }}
       padding={4}
       height={"100%"}
       width="auto"
       borderRadius={8}
     >
-      <SideMenuButtons />
+      <SideMenuButtons buttons={props.buttons} />
     </VStack>
   );
 }

@@ -11,6 +11,9 @@ export const groupColorMap: GroupColorMap = {
     Django: "Programming and Development",
     FastApi: "Programming and Development",
     React: "Programming and Development",
+    JavaScript: "Programming and Development",
+    Redux: "Programming and Development",
+    Jest: "Programming and Development",
     "Chakra UI": "Programming and Development",
     TypeScript: "Programming and Development",
     NextJS: "Programming and Development",
@@ -32,6 +35,7 @@ export const groupColorMap: GroupColorMap = {
     "Active Listening": "Communication and Collaboration",
     Collaboration: "Communication and Collaboration",
     "Presentation Skills": "Communication and Collaboration",
+    "Team Work": "Communication and Collaboration",
   };
 
 
