@@ -122,7 +122,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               align={"start"}
               height={"90%"}
               overflowY="auto"
-              paddingBottom={{ base: 16, md: 16, lg: 8, xl: 8, "2xl": 8 }}
+              paddingBottom={8}
               paddingRight={2}
             >
               <VStack width={"-webkit-fill-available"}>{props.children}</VStack>

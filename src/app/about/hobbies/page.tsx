@@ -74,7 +74,7 @@ const Hobbies = () => {
   const [showIndicator, setShowIndicator] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowIndicator(false), 10000); // Hide after 10 seconds
+    const timer = setTimeout(() => setShowIndicator(false), 5000); // Hide after 10 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -126,8 +126,34 @@ const Hobbies = () => {
   ];
 
   return (
-    <Flex direction={"row"} gap={3}>
-      <Box flex={1} fontSize={"16px"} textAlign={"justify"} p={3}>
+    <Flex
+      height="-webkit-fit-content"
+      direction={{
+        base: "column",
+        sm: "column",
+        md: "column",
+        lg: "row",
+        xl: "row",
+        "2xl": "row",
+      }}
+      gap={3}
+      overflow={"hidden"}
+
+    >
+      <Box
+        p={4}
+        flex={1}
+        fontSize={"16px"}
+        textAlign={"justify"}
+        maxW={{
+          base: "100ch",
+          sm: "100ch",
+          md: "120ch",
+          lg: "120ch",
+          xl: "130ch",
+          "2xl": "130ch",
+        }}
+      >
         I absolutely love being outdoors and exploring new places! Whether it’s
         hiking, traveling, snowboarding, or just snapping photos of everything
         around me with my camera or phone, I’m always up for an adventure. Here
@@ -136,7 +162,14 @@ const Hobbies = () => {
 
       <Flex
         flex={3}
-        w={600}
+        // width={{
+        //   base: 400,
+        //   sm: 400,
+        //   md: 500,
+        //   lg: 600,
+        //   xl: 600,
+        //   "2xl": 600,
+        // }}
         direction={"column"}
         overflow={"hidden"}
         position="relative"
@@ -181,12 +214,12 @@ const Hobbies = () => {
             animation="moveUpDown 2s infinite"
           >
             <Box mb={2}>
-              <Text fontSize="sm" color="gray.700">
+              <Text fontSize="sm" color="yellow">
                 Scroll to explore
               </Text>
             </Box>
             <Box>
-              <Box as="span" fontSize="24px" color="gray.700">
+              <Box as="span" fontSize="24px" color="yellow">
                 ↓
               </Box>
             </Box>
@@ -194,12 +227,24 @@ const Hobbies = () => {
         )}
 
         <Box>
-          <div ref={sliderRef} className="keen-slider" style={{ height: 800 }}>
+          <Box
+            ref={sliderRef}
+            className="keen-slider"
+            height={{
+              base: 300,
+              sm: 300,
+              md: 400,
+              lg: 800,
+              xl: 800,
+              "2xl": 800,
+            }}
+            overflow={"hidden"}
+          >
             {photos.map((photo) => (
               <div className="keen-slider__slide number-slide1">
                 <Flex direction={photo.flexDirection}>
                   {photo.photoLinks.map((photoLink) => (
-                    <Box flex={1} height={"auto"}>
+                    <Box flex={1}>
                       <Image asChild>
                         <NextImage
                           quality={100}
@@ -220,7 +265,7 @@ const Hobbies = () => {
                 </Flex>
               </div>
             ))}
-          </div>
+          </Box>
         </Box>
       </Flex>
     </Flex>
