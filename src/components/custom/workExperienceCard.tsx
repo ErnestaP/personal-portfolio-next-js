@@ -48,7 +48,18 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           <Heading>{employer}</Heading>
           <Separator />
         </Card.Header>
-        <Card.Body color="fg.muted">
+        <Card.Body
+          color="fg.muted"
+          textAlign={"justify"}
+          fontSize={{
+            base: "16px",
+            sm: "16px",
+            md: "16px",
+            lg: "16px",
+            xl: "18px",
+            "2xl": "18px",
+          }}
+        >
           <Flex
             gap={4}
             direction={{

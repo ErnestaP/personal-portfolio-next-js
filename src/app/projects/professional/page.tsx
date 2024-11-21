@@ -9,6 +9,16 @@ import { examplesProfessional } from "@/utils/data";
 export default function Professional() {
   return (
     <>
+      <HStack
+        flex={1}
+        gap={4}
+        p={2}
+        paddingBottom={4}
+        alignItems={"baseline"}
+        alignSelf={"baseline"}
+      >
+        <ColorMap />
+      </HStack>
       {examplesProfessional.map((example: ProjectCardProps) => (
         <Box key={example.title}>
           <ProjectCard
@@ -18,16 +28,6 @@ export default function Professional() {
           />
         </Box>
       ))}
-      <HStack
-        flex={1}
-        gap={4}
-        p={2}
-        paddingBottom={10}
-        alignItems={"baseline"}
-        alignSelf={"baseline"}
-      >
-        <ColorMap />
-      </HStack>
     </>
   );
 }

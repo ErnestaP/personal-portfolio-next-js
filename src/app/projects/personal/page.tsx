@@ -10,6 +10,16 @@ import ColorMap from "@/components/custom/colorMap";
 export default function Personal() {
   return (
     <>
+      <HStack
+        flex={1}
+        gap={4}
+        p={2}
+        paddingBottom={4}
+        alignItems={"baseline"}
+        alignSelf={"baseline"}
+      >
+        <ColorMap />
+      </HStack>
       {examplesPersonal.map((example: ProjectCardProps) => (
         <Box key={example.title} flex={1} width={"100%"}>
           <ProjectCard
@@ -19,16 +29,6 @@ export default function Personal() {
           />
         </Box>
       ))}
-      <HStack
-        flex={1}
-        gap={4}
-        p={2}
-        paddingBottom={10}
-        alignItems={"baseline"}
-        alignSelf={"baseline"}
-      >
-        <ColorMap />
-      </HStack>
     </>
   );
 }

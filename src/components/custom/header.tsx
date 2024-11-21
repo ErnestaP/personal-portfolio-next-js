@@ -41,7 +41,7 @@ export default function Header() {
           Projects
         </Button>
       </Link>
-      <Link href="/about">
+      <Link href="/about/experience">
         <Button
           fontSize={fontSize}
           fontWeight="light"

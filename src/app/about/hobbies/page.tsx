@@ -1,21 +1,17 @@
 "use client";
-
-import React from "react";
-import "./Slider.module.css";
-import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react";
+//TODO: ts errors
+import React, { useEffect, useState } from "react";
+import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { Box, Flex, HStack, Image, VStack } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 
-const WheelControls: KeenSliderPlugin = (slider) => {
-  let touchTimeout: ReturnType<typeof setTimeout>;
-  let position: {
-    x: number;
-    y: number;
-  };
-  let wheelActive: boolean;
+const WheelControls = (slider) => {
+  let touchTimeout;
+  let position;
+  let wheelActive;
 
-  function dispatch(e: WheelEvent, name: string) {
+  function dispatch(e, name) {
     position.x -= e.deltaX;
     position.y -= e.deltaY;
     slider.container.dispatchEvent(
@@ -28,7 +24,7 @@ const WheelControls: KeenSliderPlugin = (slider) => {
     );
   }
 
-  function wheelStart(e: WheelEvent) {
+  function wheelStart(e) {
     position = {
       x: e.pageX,
       y: e.pageY,
@@ -36,15 +32,15 @@ const WheelControls: KeenSliderPlugin = (slider) => {
     dispatch(e, "ksDragStart");
   }
 
-  function wheel(e: WheelEvent) {
+  function wheel(e) {
     dispatch(e, "ksDrag");
   }
 
-  function wheelEnd(e: WheelEvent) {
+  function wheelEnd(e) {
     dispatch(e, "ksDragEnd");
   }
 
-  function eventWheel(e: WheelEvent) {
+  function eventWheel(e) {
     e.preventDefault();
     if (!wheelActive) {
       wheelStart(e);
@@ -65,46 +61,8 @@ const WheelControls: KeenSliderPlugin = (slider) => {
   });
 };
 
-const photos = [
-  {
-    flexDirection: "",
-    1: "/hobbies/palanga.JPG",
-    2: "/hobbies/dubai-2.JPG",
-    3: "/hobbies/drive-in.JPG",
-    4: "/hobbies/japan-2.JPG",
-  },
-  {
-    flexDirection: "row-reverse",
-    1: "/hobbies/shadow-1.JPG",
-    2: "/hobbies/building.JPG",
-    3: "/hobbies/bulbs.jpeg",
-    4: "/hobbies/lights.JPG",
-  },
-  {
-    flexDirection: "",
-    1: "/hobbies/driving-1.JPG",
-    2: "/hobbies/hike-1.JPG",
-    3: "/hobbies/hike-2.jpeg",
-    4: "/hobbies/hike-3.jpeg",
-  },
-  {
-    flexDirection: "row-reverse",
-    1: "/hobbies/driving-2.JPG",
-    2: "/hobbies/dubai-1.JPG",
-    3: "/hobbies/sunset.jpeg",
-    4: "/hobbies/us.jpeg",
-  },
-  {
-    flexDirection: "row-reverse",
-    1: "/hobbies/palanga-2.JPG",
-    2: "/hobbies/lake.JPG",
-    3: "/hobbies/snowboarding.jpeg",
-    4: "/hobbies/elnias.jpeg",
-  },
-];
-
-export default function App() {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>(
+const Hobbies = () => {
+  const [sliderRef] = useKeenSlider(
     {
       loop: false,
       rubberband: false,
@@ -113,123 +71,160 @@ export default function App() {
     [WheelControls]
   );
 
+  const [showIndicator, setShowIndicator] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowIndicator(false), 10000); // Hide after 10 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  const photos = [
+    {
+      flexDirection: "column",
+      photoLinks: ["/hobbies/dubai-2.JPG"],
+    },
+    {
+      flexDirection: "row",
+      photoLinks: ["/hobbies/drive-in.JPG", "/hobbies/japan-2.JPG"],
+    },
+    {
+      flexDirection: "column",
+      photoLinks: ["/hobbies/sri-lanka.JPG"],
+    },
+    {
+      flexDirection: "row",
+      photoLinks: ["/hobbies/hike-2.jpeg", "/hobbies/bulbs.jpeg"],
+    },
+    {
+      flexDirection: "column",
+      photoLinks: ["/hobbies/building.JPG"],
+    },
+    {
+      flexDirection: "row",
+      photoLinks: ["/hobbies/hike-3.jpeg", "/hobbies/us.jpeg"],
+    },
+    {
+      flexDirection: "column",
+      photoLinks: ["/hobbies/shadow-1.JPG"],
+    },
+    {
+      flexDirection: "row",
+      photoLinks: ["/hobbies/sunset.jpeg", "/hobbies/lights.JPG"],
+    },
+    {
+      flexDirection: "column",
+      photoLinks: ["/hobbies/driving-1.JPG"],
+    },
+    {
+      flexDirection: "row",
+      photoLinks: ["/hobbies/elnias.jpeg", "/hobbies/japan.JPG"],
+    },
+    {
+      flexDirection: "column",
+      photoLinks: ["/hobbies/lake.JPG"],
+    },
+  ];
+
   return (
-    <Flex direction={"column"}>
-      <Flex ref={sliderRef} className="keen-slider" style={{ height: 900 }}>
-        {photos.map((photoSrc, index) => (
-          <div className="keen-slider__slide number-slide1">
-            <HStack direction={photoSrc.flexDirection} objectFit={"cover"}>
-              <Box>
-                <Image asChild h={"max-content"}>
-                  <NextImage
-                    quality={100}
-                    width={600}
-                    height={900}
-                    src={photoSrc[4]}
-                    style={{
-                      objectFit: "cover",
-                      height: "100%",
-                      width: "auto",
-                    }}
-                    alt="Picture of the author"
-                  />
-                </Image>
+    <Flex direction={"row"} gap={3}>
+      <Box flex={1} fontSize={"16px"} textAlign={"justify"} p={3}>
+        I absolutely love being outdoors and exploring new places! Whether it’s
+        hiking, traveling, snowboarding, or just snapping photos of everything
+        around me with my camera or phone, I’m always up for an adventure. Here
+        are a few of my favorite shots :)
+      </Box>
+
+      <Flex
+        flex={3}
+        w={600}
+        direction={"column"}
+        overflow={"hidden"}
+        position="relative"
+      >
+        <style>
+          {`
+            @keyframes moveUpDown {
+              0% {
+                transform: translate(-50%, -50%);
+              }
+              50% {
+                transform: translate(-50%, -55%);
+              }
+              100% {
+                transform: translate(-50%, -50%);
+              }
+            }
+
+            @keyframes fadeInOut {
+              0% {
+                opacity: 0;
+              }
+              50% {
+                opacity: 1;
+              }
+              100% {
+                opacity: 0;
+              }
+            }
+          `}
+        </style>
+
+        {/* Scroll Indicator */}
+        {showIndicator && (
+          <Box
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            zIndex={10}
+            textAlign="center"
+            animation="moveUpDown 2s infinite"
+          >
+            <Box mb={2}>
+              <Text fontSize="sm" color="gray.700">
+                Scroll to explore
+              </Text>
+            </Box>
+            <Box>
+              <Box as="span" fontSize="24px" color="gray.700">
+                ↓
               </Box>
-              <VStack>
-                {/* {photoSrc.src.map((src) => ( */}
-                <Box>
-                  <Image asChild>
-                    <NextImage
-                      quality={100}
-                      width={600}
-                      height={900}
-                      style={{
-                        objectFit: "cover",
-                        height: "100%",
-                        width: "auto",
-                      }}
-                      src={photoSrc[1]}
-                      alt="Picture of the author"
-                    />
-                  </Image>
-                </Box>
-                <Box>
-                  <Image asChild>
-                    <NextImage
-                      quality={100}
-                      width={600}
-                      height={900}
-                      src={photoSrc[2]}
-                      alt="Picture of the author"
-                      style={{
-                        objectFit: "cover",
-                        height: "auto",
-                        width: "auto",
-                      }}
-                    />
-                  </Image>
-                </Box>
-              </VStack>
-              <Box>
-                <Image asChild>
-                  <NextImage
-                    quality={100}
-                    width={600}
-                    height={900}
-                    style={{
-                      objectFit: "cover",
-                      height: "auto",
-                      width: "auto",
-                    }}
-                    src={photoSrc[3]}
-                    alt="Picture of the author"
-                  />
-                </Image>
-              </Box>
-            </HStack>
+            </Box>
+          </Box>
+        )}
+
+        <Box>
+          <div ref={sliderRef} className="keen-slider" style={{ height: 800 }}>
+            {photos.map((photo) => (
+              <div className="keen-slider__slide number-slide1">
+                <Flex direction={photo.flexDirection}>
+                  {photo.photoLinks.map((photoLink) => (
+                    <Box flex={1} height={"auto"}>
+                      <Image asChild>
+                        <NextImage
+                          quality={100}
+                          width={600}
+                          height={800}
+                          src={photoLink}
+                          style={{
+                            objectFit: "cover",
+                            alignItems: "center",
+                            height: "auto",
+                            width: "100%",
+                          }}
+                          alt="Picture of the author"
+                        />
+                      </Image>
+                    </Box>
+                  ))}
+                </Flex>
+              </div>
+            ))}
           </div>
-        ))}
-      </Flex>
-      <HStack justify={"center"} align={"start"} padding={8}>
-        <Box
-          maxW={"120ch"}
-          fontSize={{
-            base: "16px",
-            sm: "16px",
-            md: "20",
-            lg: "20",
-            xl: "25px",
-            "2xl": "25px",
-          }}
-        >
-          I absolutely love being outdoors and exploring new places! Whether
-          it’s hiking, traveling, snowboarding, or just snapping photos of
-          everything around me with my camera or phone, I’m always up for an
-          adventure. Here are a few of my favorite shots :)
         </Box>
-      </HStack>
+      </Flex>
     </Flex>
   );
-}
+};
 
-//     <Flex justify="center" align="center" height="100vh">
-// <CubicEyeLoader/>
-//     </Flex>
-//   )
-// }
-
-// export default function Hobbies() {
-//   return (
-//     <Flex justify="center" align="center">
-//       <CubicEyeLoader />
-//     </Flex>
-//   );
-// }
-
-// export default function Experience() {
-//   return (
-//     <Flex justify="center" align="center">
-//       <CubicEyeLoader />
-//     </Flex>
-//   );
-// }
+export default Hobbies;

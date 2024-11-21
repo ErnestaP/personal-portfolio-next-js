@@ -20,9 +20,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
     <Stack align={"start"} width={"-webkit-fill-available"}>
       <Card.Root size="sm" fontFamily="cardFont" width={"100%"}>
         <Card.Header>
-          <Heading size="md">{title}</Heading>
+          <Heading>{title}</Heading>
         </Card.Header>
-        <Card.Body color="fg.muted">
+        <Card.Body
+          color="fg.muted"
+          textAlign={"justify"}
+          fontSize={{
+            base: "16px",
+            sm: "16px",
+            md: "16px",
+            lg: "16px",
+            xl: "18px",
+            "2xl": "18px",
+          }}
+        >
           <HStack>{role && <Box fontWeight={600}>Role: {role}</Box>}</HStack>
           <Flex
             direction={{
@@ -53,14 +64,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
                     lg: "300",
                     xl: "300",
                     "2xl": "400",
-                  }}
-                  fontSize={{
-                    base: "16px",
-                    sm: "16px",
-                    md: "16px",
-                    lg: "16px",
-                    xl: "18px",
-                    "2xl": "18px",
                   }}
                 >
                   <VStack align={"baseline"} gap={2}>

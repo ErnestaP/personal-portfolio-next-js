@@ -8,6 +8,16 @@ import ColorMap from "@/components/custom/colorMap";
 export default function Experience() {
   return (
     <VStack>
+      <HStack
+        flex={1}
+        gap={4}
+        p={2}
+        paddingBottom={4}
+        alignItems={"baseline"}
+        alignSelf={"baseline"}
+      >
+        <ColorMap />
+      </HStack>
       {examplesExperience.map((example: ExperienceCardProps) => (
         <Box flex={1}>
           <ExperienceCard
@@ -22,16 +32,6 @@ export default function Experience() {
           />
         </Box>
       ))}
-      <HStack
-        flex={1}
-        gap={4}
-        p={2}
-        paddingBottom={10}
-        alignItems={"baseline"}
-        alignSelf={"baseline"}
-      >
-        <ColorMap />
-      </HStack>
     </VStack>
   );
 }

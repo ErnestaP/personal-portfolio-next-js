@@ -27,14 +27,6 @@ const EducationCard: React.FC<EducationCardProps> = ({
 
   return (
     <Stack
-      fontSize={{
-        base: "16px",
-        sm: "16px",
-        md: "16px",
-        lg: "16px",
-        xl: "18px",
-        "2xl": "18px",
-      }}
       align={"start"}
       width={"-webkit-fill-available"}
     >
@@ -43,7 +35,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
           <Heading>{university}</Heading>
           <Separator />
         </Card.Header>
-        <Card.Body color="fg.muted">
+        <Card.Body color="fg.muted" textAlign={"justify"}>
           <Flex
             gap={4}
             direction={{
@@ -53,6 +45,14 @@ const EducationCard: React.FC<EducationCardProps> = ({
               lg: "row",
               xl: "row",
               "2xl": "row",
+            }}
+            fontSize={{
+              base: "16px",
+              sm: "16px",
+              md: "16px",
+              lg: "16px",
+              xl: "18px",
+              "2xl": "18px",
             }}
           >
             <Box
