@@ -1,18 +1,5 @@
-import {
-  createSystem,
-  defaultConfig,
-  defineConfig,
-  defineStyle,
-} from "@chakra-ui/react";
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 import { MuseoModerno, Poppins, Khula } from "next/font/google";
-
-const responsiveFontSizes = {
-  smallTitle: ["2rem", "2.4rem", "3rem"], // [base, md, lg]
-  mediumTitle: ["2.5rem", "3.125rem", "3.5rem"], // [base, md, lg]
-  largeTitle: ["3rem", "3.75rem", "4.5rem"], // [base, md, lg]
-  extraLargeTitle: ["4rem", "5rem", "6rem"], // [base, md, lg]
-  extraExtraLargeTitle: ["6rem", "7.5rem", "9rem"], // [base, md, lg]
-};
 
 const museoModerno = MuseoModerno({
   subsets: ["latin"],
@@ -31,7 +18,6 @@ const khula = Khula({
   display: "swap",
   weight: ["300", "400", "600"],
 });
-
 
 const customConfig = defineConfig({
   globalCss: {

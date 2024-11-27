@@ -14,8 +14,9 @@ import {
 import { Tag } from "@/components/ui/tag";
 import { getColorBySkill } from "@/utils/colorsMap";
 import { FaGithub } from "react-icons/fa";
+import { ProjectsData } from "@/utils/interfaces";
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
+const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
   return (
     <Stack align={"start"} width={"-webkit-fill-available"}>
       <Card.Root size="sm" fontFamily="cardFont" width={"100%"}>
@@ -34,7 +35,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
             "2xl": "18px",
           }}
         >
-          <HStack>{role && <Box fontWeight={600}>Role: {role}</Box>}</HStack>
+          <HStack>{role && <Box fontWeight={600}>{role}</Box>}</HStack>
           <Flex
             direction={{
               base: "column",
@@ -49,14 +50,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
             width={"100%"}
             gap={8}
           >
-            {Object.keys(skillSet).map((skill) => {
+            {skillSet.map((skill, index) => {
               return (
                 <VStack
                   flex={1}
                   align={"start"}
                   justify={"space-between"}
                   gap={4}
-                  key={skill}
+                  key={index}
                   fontWeight={{
                     base: "300",
                     sm: "300",
@@ -68,23 +69,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, role, skillSet }) => {
                 >
                   <VStack align={"baseline"} gap={2}>
                     <HStack align={"center"}>
-                      <Box fontWeight={600}>Skill: {skill}</Box>
-                      {skillSet[skill].gits.map((git, index) => (
-                        <Box key={index}>
-                          <IconButton
-                            variant="ghost"
-                            onClick={() => window.open(git, "_blank")}
-                          >
-                            <FaGithub />
-                          </IconButton>
-                        </Box>
-                      ))}
+                      <Box fontWeight={600}>{skill.title}</Box>
+                      {skill.gits &&
+                        skill.gits.map((git, index) => (
+                          <Box key={index}>
+                            <IconButton
+                              variant="ghost"
+                              onClick={() => window.open(git, "_blank")}
+                            >
+                              <FaGithub />
+                            </IconButton>
+                          </Box>
+                        ))}
                     </HStack>
-                    <Box>{skillSet[skill].description}</Box>
+                    <Box>{skill.description}</Box>
                   </VStack>
                   <HStack gap={2}>
-                    {skillSet[skill].skills.map((skill) => (
-                      <Box>
+                    {skill.skills.map((skill, index) => (
+                      <Box key={index}>
                         <Tag
                           size={{
                             base: "sm",

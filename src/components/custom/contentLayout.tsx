@@ -4,7 +4,8 @@ import React from "react";
 import { usePathname } from "next/navigation";
 
 import { VStack, Box, Text, HStack, Flex } from "@chakra-ui/react";
-import { SideMenu, SideMenuButtons } from "@/components/custom/sideMenu";
+import { SideMenu } from "@/components/custom/sideMenu";
+import { SideMenuConfigProps } from "@/utils/interfaces";
 
 export default function ContentLayout(props: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -85,7 +86,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                   "2xl": "none",
                 }}
               >
-                <SideMenuButtons buttons={currentPage.buttons} />
+                <SideMenu buttons={currentPage.buttons} onlyButtons />
               </HStack>
             </VStack>
             <Box
@@ -98,11 +99,9 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                 xl: "block",
                 "2xl": "block",
               }}
-            >
-              Filler
-            </Box>
+            ></Box>
           </HStack>
-          <HStack height={"100%"} align={"start"}>
+          <HStack height={"90%"} align={"start"}>
             <Box
               display={{
                 base: "none",
@@ -120,10 +119,11 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
             <HStack
               flex={6}
               align={"start"}
-              height={"90%"}
+              height={"100%"}
               overflowY="auto"
               paddingBottom={8}
               paddingRight={2}
+              paddingLeft={2}
             >
               <VStack width={"-webkit-fill-available"}>{props.children}</VStack>
             </HStack>

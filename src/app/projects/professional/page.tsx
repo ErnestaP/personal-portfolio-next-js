@@ -1,12 +1,13 @@
-"use client";
 import React from "react";
 
 import { Box, HStack } from "@chakra-ui/react";
 import ProjectCard from "@/components/custom/projectCard";
 import ColorMap from "@/components/custom/colorMap";
-import { examplesProfessional } from "@/utils/data";
+import { fetchData } from "@/utils/helpers";
+import { ProjectsData } from "@/utils/interfaces";
 
-export default function Professional() {
+export default async function Professional() {
+  const data: ProjectsData[] = await fetchData("professional-projects");
   return (
     <>
       <HStack
@@ -19,12 +20,13 @@ export default function Professional() {
       >
         <ColorMap />
       </HStack>
-      {examplesProfessional.map((example: ProjectCardProps) => (
-        <Box key={example.title}>
+      {data.map((project: ProjectsData) => (
+        <Box key={project.id}>
           <ProjectCard
-            title={example.title}
-            role={example.role}
-            skillSet={example.skillSet}
+            id={project.id}
+            title={project.title}
+            role={project.role}
+            skillSet={project.skillSet}
           />
         </Box>
       ))}

@@ -1,21 +1,27 @@
 import React from "react";
 
-import { Box, HStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import EducationCard from "@/components/custom/educationCard";
-import { examplesUniversity } from "@/utils/data";
+import { educationImagesMapping } from "@/utils/imagesMapping";
+import { fetchData, normalizedData, sortData } from "@/utils/helpers";
+import { NormalizedData, Data } from "@/utils/interfaces";
 
-export default function Education() {
+export default async function Education() {
+  const data: Data[] = await fetchData("education");
+  const normalizedAndSortedData: NormalizedData[] = sortData(
+    normalizedData(data)
+  );
   return (
     <>
-      {examplesUniversity.map((example: EducationCardProps) => (
-        <Box key={example.university}>
+      {normalizedAndSortedData.map((university: NormalizedData) => (
+        <Box key={university.title}>
           <EducationCard
-            university={example.university}
-            degree={example.degree}
-            field={example.field}
-            description={example.description}
-            image={example.image}
-            date={example.date}
+            title={university.title}
+            degree={university.degree}
+            field={university.field}
+            description={university.description}
+            image={educationImagesMapping[university.title]}
+            date={university.date}
           />
         </Box>
       ))}

@@ -6,12 +6,18 @@ import { useRecipe, IconButton } from "@chakra-ui/react";
 import { FaLinkedin } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FaGithub } from "react-icons/fa";
+import { PiReadCvLogo } from "react-icons/pi";
 
 import { iconRecipe } from "@/recipes/icon.recipe";
 
 export default function Icons() {
   const recipe = useRecipe({ recipe: iconRecipe });
   const styles = recipe({ size: "lg" });
+
+  const handleOpenPdf = () => {
+    const pdfUrl = "/Ernesta_Petraityte_CV.pdf";
+    window.open(pdfUrl, "_blank");
+  };
   return (
     <>
       <IconButton
@@ -44,6 +50,9 @@ export default function Icons() {
         }
       >
         <TfiEmail />
+      </IconButton>
+      <IconButton css={styles} variant="ghost" onClick={handleOpenPdf}>
+        <PiReadCvLogo />
       </IconButton>
     </>
   );

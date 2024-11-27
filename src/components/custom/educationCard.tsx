@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   Card,
@@ -7,32 +5,27 @@ import {
   VStack,
   Stack,
   Box,
-  HStack,
   Image,
   Flex,
   Separator,
 } from "@chakra-ui/react";
 import NextImage from "next/image";
-import { useTheme } from "next-themes";
+import { EducationCardProps } from "@/utils/interfaces";
 
 const EducationCard: React.FC<EducationCardProps> = ({
-  university,
+  title,
   degree,
   field,
   description,
   image,
   date,
 }) => {
-  const { resolvedTheme } = useTheme();
 
   return (
-    <Stack
-      align={"start"}
-      width={"-webkit-fill-available"}
-    >
+    <Stack align={"start"} width={"-webkit-fill-available"}>
       <Card.Root size="lg" fontFamily="cardFont" width={"100%"}>
         <Card.Header>
-          <Heading>{university}</Heading>
+          <Heading>{title}</Heading>
           <Separator />
         </Card.Header>
         <Card.Body color="fg.muted" textAlign={"justify"}>
@@ -59,9 +52,9 @@ const EducationCard: React.FC<EducationCardProps> = ({
               flex={1}
               padding={4}
               borderRadius={8}
-              filter={`invert(${resolvedTheme === "light" ? "1" : "0"})`}
+              filter={{ base: "invert(1)", _dark: "invert(0)" }}
             >
-              <Image asChild>
+              <Image asChild alt="Picture of the author">
                 <NextImage
                   quality={100}
                   width={300}

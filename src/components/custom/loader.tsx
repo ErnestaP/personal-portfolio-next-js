@@ -5,7 +5,7 @@ const SpiralSpinner = () => {
   const points = "...";
 
   return (
-    <Flex
+     <Flex
       align="center"
       justify="start"
       height="400px"

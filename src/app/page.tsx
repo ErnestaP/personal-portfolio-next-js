@@ -1,8 +1,8 @@
-import InitialImage from "@/components/custom/InitialImage";
+import InitialImage from "@/components/custom/initialImage";
 import { Flex, VStack, Text } from "@chakra-ui/react";
 import Footer from "@/components/custom/footer";
 
-export default function Page({ children }: { children: React.ReactNode }) {
+export default function Page() {
   return (
     <>
       <Flex
@@ -21,13 +21,12 @@ export default function Page({ children }: { children: React.ReactNode }) {
         <VStack
           overflow={{ base: "visible", sm: "visible", lg: "auto", xl: "auto" }}
           flex="1"
-          overflowY="auto"
+          overflowY="visible"
           p={4}
           justify="space-between"
           align="baseline"
           height={"100%"}
         >
-          {children}
           <VStack align="start" flex={3} justify="end">
             <Text
               fontSize={{

@@ -46,7 +46,7 @@ export default function Header() {
           fontSize={fontSize}
           fontWeight="light"
           variant="plain"
-          color={pathname == "/about" ? "secondary" : "default"}
+          color={basePage == "about" ? "secondary" : "default"}
           _dark={{ color: basePage == "about" ? "#EFC946" : "default" }}
         >
           About Me

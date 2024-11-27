@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import NextImage from "next/image";
 import {
@@ -9,14 +7,13 @@ import {
   Stack,
   Box,
   VStack,
-  IconButton,
   Flex,
   Separator,
   Image,
 } from "@chakra-ui/react";
 import { Tag } from "@/components/ui/tag";
 import { getColorBySkill } from "@/utils/colorsMap";
-import { useTheme } from "next-themes";
+import { ExperienceCardProps } from "@/utils/interfaces";
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   employer,
@@ -28,8 +25,6 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   skills,
   image,
 }) => {
-  const { resolvedTheme } = useTheme();
-
   return (
     <Stack
       align={"start"}
@@ -75,13 +70,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               flex={1}
               padding={4}
               borderRadius={8}
-              filter={`invert(${resolvedTheme === "light" ? "1" : "0"})`}
+              filter={{ base: "invert(1)", _dark: "invert(0)" }}
             >
-              <Image asChild>
+              <Image asChild alt="Picture of the author">
                 <NextImage
                   quality={100}
                   width={300}
                   height={300}
+                  priority
                   src={image}
                   alt="Picture of the author"
                 />
@@ -111,8 +107,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                 }}
                 justify="flex-start" // Align items on smaller screens
               >
-                {skills.map((skill) => (
+                {skills.map((skill, index) => (
                   <Box
+                    key={index}
                     flex={{
                       base: "1 1 calc(33.333% - 8px)", // Each tag takes up a third of the row minus the gap
                       sm: "1 1 calc(33.333% - 8px)",

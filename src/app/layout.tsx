@@ -1,19 +1,24 @@
 import React from "react";
-
 import { Flex, Text, VStack } from "@chakra-ui/react";
 import Header from "@/components/custom/header";
 import { Provider } from "@/components/ui/provider";
 import SideBar from "@/components/custom/sideBar";
 import ContentLayout from "@/components/custom/contentLayout";
 
-export default function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props;
+export const metadata = {
+  title: "EP",
+  description: "Ernesta Petraityte Portfolio",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning>
-      <head></head>
+    <html lang="en">
       <body>
         <Provider>
-          <Flex height="100vh" direction="column">
+          <Flex height="95vh" direction="column">
             <Header />
             <Flex flex={1} overflow="hidden">
               <SideBar />

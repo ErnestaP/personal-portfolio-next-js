@@ -1,42 +1,33 @@
-interface GroupColorMap {
+export interface GroupColorMap {
   [group: string]: string;
 }
 
-interface SkillToGroupMap {
+export interface SkillToGroupMap {
   [skill: string]: string;
 }
 
-interface SkillMetadata {
+export interface SkillMetadata {
   skill: string;
   group: string;
   color: string;
 }
 
-interface GroupSkills {
-  group: string;
-  color: string;
-  skills: string[];
-}
-
-interface SkillDetail {
-  description: string;
-  skills: string[];
-  gits: string[];
-}
-
-interface SkillSet {
-  [key: string]: SkillDetail;
-}
-
-interface ProjectCardProps {
+export interface EducationData {
   title: string;
-  employer?: string;
-  role: string;
-  skillSet: SkillSet;
+  degree: string;
+  field: string;
+  description: string;
+  image: string;
+  dateFrom: TimeStampProps;
+  dateTo: TimeStampProps;
 }
 
-interface EducationCardProps {
-  university: string;
+export interface EducationNormalizedData extends EducationData {
+  date: string;
+}
+
+export interface EducationCardProps {
+  title: string;
   degree: string;
   field: string;
   description: string;
@@ -44,23 +35,38 @@ interface EducationCardProps {
   date: string;
 }
 
-interface SideMenuButtonsProps {
+export interface SideMenuButtonsProps {
   label: string;
   href: string;
 }
 
-interface SideMenuProps {
+export interface SideMenuProps {
   title: string;
   buttons: SideMenuButtonsProps[];
 }
 
-interface SideMenuConfigProps {
+export interface SideMenuConfigProps {
   [key: string]: SideMenuProps;
 }
 
-interface ExperienceCardProps {
+export interface ExperienceData {
+  id: string;
+  title: string;
+  team: string;
+  location: string;
   employer: string;
-  team?: string,
+  description: string;
+  skills: string[];
+  dateFrom: TimeStampProps;
+  dateTo: TimeStampProps;
+}
+export interface ExperienceNormalizedData extends ExperienceData {
+  date: string;
+}
+
+export interface ExperienceCardProps {
+  employer: string;
+  team?: string;
   title: string;
   date: string;
   location: string;
@@ -68,3 +74,41 @@ interface ExperienceCardProps {
   image: string;
   skills: string[];
 }
+
+export interface TimeStampProps {
+  seconds: number;
+  nanoseconds: number;
+}
+
+export interface ImagesMappingProps {
+  [title: string]: string;
+}
+
+export interface SkillSet {
+  title: string;
+  description: string;
+  skills: string[];
+  gits: string[];
+}
+
+export interface ProjectsData {
+  id: string;
+  title: string;
+  employer?: string;
+  role?: string;
+  skillSet: SkillSet[];
+}
+
+export interface Hobbies {
+  description: string;
+  title: string;
+}
+
+export interface FilterProps {
+  base: string;
+  _dark: string;
+}
+
+export type Data = EducationData & ExperienceData & ProjectsData;
+
+export type NormalizedData = EducationNormalizedData & ExperienceNormalizedData;

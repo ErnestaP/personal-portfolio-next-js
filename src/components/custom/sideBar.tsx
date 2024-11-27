@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { VStack, Box } from "@chakra-ui/react";
