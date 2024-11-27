@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react';
 
-import { ChakraProvider } from "@chakra-ui/react"
-import { ThemeProvider } from "next-themes"
-import { system } from "./theme"
+import { ChakraProvider } from '@chakra-ui/react';
+import { ThemeProvider } from 'next-themes';
+import { system } from './theme';
 
 export function Provider(props: { children: React.ReactNode }) {
   return (
@@ -11,5 +11,5 @@ export function Provider(props: { children: React.ReactNode }) {
         {props.children}
       </ThemeProvider>
     </ChakraProvider>
-  )
+  );
 }

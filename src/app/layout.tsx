@@ -1,19 +1,23 @@
-import React from "react";
-import { Flex, Text, VStack } from "@chakra-ui/react";
-import Header from "@/components/custom/header";
-import { Provider } from "@/components/ui/provider";
-import SideBar from "@/components/custom/sideBar";
-import ContentLayout from "@/components/custom/contentLayout";
+import React from 'react';
+import { Flex, Text, VStack } from '@chakra-ui/react';
+import Header from '@/components/custom/header';
+import { Provider } from '@/components/ui/provider';
+import SideBar from '@/components/custom/sideBar';
+import ContentLayout from '@/components/custom/contentLayout';
 
 export const metadata = {
-  title: "EP",
-  description: "Ernesta Petraityte Portfolio",
+  title: 'EP',
+  description: 'Ernesta Petraityte Portfolio',
   icons: {
-    icon: "/favicon.png",
+    icon: '/favicon.png',
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>

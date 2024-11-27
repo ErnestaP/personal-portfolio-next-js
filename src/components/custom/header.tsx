@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React from "react";
-import { usePathname } from "next/navigation";
+import React from 'react';
+import { usePathname } from 'next/navigation';
 
-import { HStack, Button } from "@chakra-ui/react";
-import { ColorModeButton } from "@/components/ui/color-mode";
-import Link from "next/link";
+import { HStack, Button } from '@chakra-ui/react';
+import { ColorModeButton } from '@/components/ui/color-mode';
+import Link from 'next/link';
 
 export default function Header() {
   const pathname = usePathname();
-  const basePage = pathname.split("/")[1];
+  const basePage = pathname.split('/')[1];
   const fontSize = {
-    base: "16px",
-    md: "md",
-    lg: "lg",
-    xl: "xl",
-    "2xl": "2xl",
+    base: '16px',
+    md: 'md',
+    lg: 'lg',
+    xl: 'xl',
+    '2xl': '2xl',
   };
   return (
     <HStack p={4} justify="flex-end">
@@ -24,8 +24,8 @@ export default function Header() {
           fontSize={fontSize}
           fontWeight="light"
           variant="plain"
-          color={pathname == "/" ? "secondary" : "default"}
-          _dark={{ color: pathname == "/" ? "#EFC946" : "default" }}
+          color={pathname == '/' ? 'secondary' : 'default'}
+          _dark={{ color: pathname == '/' ? '#EFC946' : 'default' }}
         >
           Home
         </Button>
@@ -35,8 +35,8 @@ export default function Header() {
           fontSize={fontSize}
           fontWeight="light"
           variant="plain"
-          color={basePage == "projects" ? "secondary" : "default"}
-          _dark={{ color: basePage == "projects" ? "#EFC946" : "default" }}
+          color={basePage == 'projects' ? 'secondary' : 'default'}
+          _dark={{ color: basePage == 'projects' ? '#EFC946' : 'default' }}
         >
           Projects
         </Button>
@@ -46,8 +46,8 @@ export default function Header() {
           fontSize={fontSize}
           fontWeight="light"
           variant="plain"
-          color={basePage == "about" ? "secondary" : "default"}
-          _dark={{ color: basePage == "about" ? "#EFC946" : "default" }}
+          color={basePage == 'about' ? 'secondary' : 'default'}
+          _dark={{ color: basePage == 'about' ? '#EFC946' : 'default' }}
         >
           About Me
         </Button>

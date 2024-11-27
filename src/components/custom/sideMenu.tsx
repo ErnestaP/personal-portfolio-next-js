@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import { VStack, Box, Button } from "@chakra-ui/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { FilterProps, SideMenuButtonsProps } from "@/utils/interfaces";
+import { VStack, Box, Button } from '@chakra-ui/react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { FilterProps, SideMenuButtonsProps } from '@/utils/interfaces';
 
 function SideMenuButtons(props: {
   buttons: SideMenuButtonsProps[];
@@ -13,11 +13,11 @@ function SideMenuButtons(props: {
   const pathname = usePathname();
 
   const fontSize = {
-    base: "16px",
-    md: "md",
-    lg: "lg",
-    xl: "xl",
-    "2xl": "2xl",
+    base: '16px',
+    md: 'md',
+    lg: 'lg',
+    xl: 'xl',
+    '2xl': '2xl',
   };
   return (
     <>
@@ -28,9 +28,9 @@ function SideMenuButtons(props: {
               fontSize={fontSize}
               fontWeight="light"
               variant="plain"
-              color={pathname == button.href ? "secondary" : "default"}
+              color={pathname == button.href ? 'secondary' : 'default'}
               _dark={{
-                color: pathname == button.href ? "#EFC946" : "default",
+                color: pathname == button.href ? '#EFC946' : 'default',
               }}
             >
               {button.label}
@@ -49,27 +49,25 @@ export function SideMenu(props: {
   return (
     <>
       {props.onlyButtons ? (
-        <SideMenuButtons
-          buttons={props.buttons}
-        />
+        <SideMenuButtons buttons={props.buttons} />
       ) : (
         <VStack
           backgroundImage={"url('/SideFaceInvert.png')"}
           backgroundPosition="center"
-          filter={{ base: "invert(0)", _dark: "invert(1)" }}
+          filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
           backgroundRepeat="no-repeat"
-          backgroundColor={"rgba(255, 255, 255, 0.9)"}
+          backgroundColor={'rgba(255, 255, 255, 0.9)'}
           backgroundBlendMode="overlay"
           backgroundSize="cover"
-          gap={{ base: "3", md: "3", lg: "5", xl: "5", "2xl": "5" }}
+          gap={{ base: '3', md: '3', lg: '5', xl: '5', '2xl': '5' }}
           padding={4}
-          height={"100%"}
+          height={'100%'}
           width="auto"
           borderRadius={8}
         >
           <SideMenuButtons
             buttons={props.buttons}
-            filter={{ base: "invert(0)", _dark: "invert(1)" }}
+            filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
           />
         </VStack>
       )}

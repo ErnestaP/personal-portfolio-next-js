@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { useKeenSlider, KeenSliderInstance } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-import { Box, Flex, Image, Skeleton, Text } from "@chakra-ui/react";
-import NextImage from "next/image";
-import { photos } from "@/utils/photos";
+import React, { useEffect, useState } from 'react';
+import { useKeenSlider, KeenSliderInstance } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
+import { Box, Flex, Image, Skeleton, Text } from '@chakra-ui/react';
+import NextImage from 'next/image';
+import { photos } from '@/utils/photos';
 
 interface Position {
   x: number;
@@ -38,15 +38,15 @@ const WheelControls = (
       x: e.pageX,
       y: e.pageY,
     };
-    dispatch(e, "ksDragStart");
+    dispatch(e, 'ksDragStart');
   }
 
   function wheel(e: WheelEvent) {
-    dispatch(e, "ksDrag");
+    dispatch(e, 'ksDrag');
   }
 
   function wheelEnd(e: WheelEvent) {
-    dispatch(e, "ksDragEnd");
+    dispatch(e, 'ksDragEnd');
   }
 
   function eventWheel(e: WheelEvent) {
@@ -66,8 +66,8 @@ const WheelControls = (
     }, 50);
   }
 
-  slider.on("created", () => {
-    slider.container.addEventListener("wheel", eventWheel as EventListener, {
+  slider.on('created', () => {
+    slider.container.addEventListener('wheel', eventWheel as EventListener, {
       passive: false,
     });
   });
@@ -75,7 +75,7 @@ const WheelControls = (
 
 const PhotoLibrary: React.FC = () => {
   const [loadedImages, setLoadedImages] = useState<number>(0);
-  const [visibility, setVisibility] = useState<"visible" | "hidden">("hidden");
+  const [visibility, setVisibility] = useState<'visible' | 'hidden'>('hidden');
   const [showIndicator, setShowIndicator] = useState<boolean>(false);
 
   const handleImageLoad = () => {
@@ -94,20 +94,20 @@ const PhotoLibrary: React.FC = () => {
   useEffect(() => {
     if (loadedImages === photos.length - 3) {
       setShowIndicator(true);
-      setVisibility("visible");
+      setVisibility('visible');
     } else if (loadedImages < photos.length - 3) {
-      setVisibility("hidden");
+      setVisibility('hidden');
     }
   }, [loadedImages]);
 
   useEffect(() => {
     setLoadedImages(0);
     setShowIndicator(true);
-    setVisibility("visible");
+    setVisibility('visible');
   }, []);
 
   return (
-    <Flex flex={3} direction={"column"} position="relative">
+    <Flex flex={3} direction={'column'} position="relative">
       <>
         <style>
           {`
@@ -130,12 +130,12 @@ const PhotoLibrary: React.FC = () => {
           <Box
             position="absolute"
             visibility={{
-              base: "hidden",
-              sm: "hidden",
-              md: "visible",
-              lg: "visible",
-              xl: "visible",
-              "2xl": "visible",
+              base: 'hidden',
+              sm: 'hidden',
+              md: 'visible',
+              lg: 'visible',
+              xl: 'visible',
+              '2xl': 'visible',
             }}
             top="50%"
             left="50%"
@@ -167,7 +167,7 @@ const PhotoLibrary: React.FC = () => {
               md: 300,
               lg: 500,
               xl: 500,
-              "2xl": 950,
+              '2xl': 950,
             }}
           >
             {photos.map((photo, index) => (
@@ -181,9 +181,9 @@ const PhotoLibrary: React.FC = () => {
                         md: 300,
                         lg: 500,
                         xl: 500,
-                        "2xl": 950,
+                        '2xl': 950,
                       }}
-                      width={"100%"}
+                      width={'100%'}
                     />
                   )}
 

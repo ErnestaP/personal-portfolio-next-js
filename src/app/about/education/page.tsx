@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { Box } from "@chakra-ui/react";
-import EducationCard from "@/components/custom/educationCard";
-import { educationImagesMapping } from "@/utils/imagesMapping";
-import { fetchData, normalizedData, sortData } from "@/utils/helpers";
-import { NormalizedData, Data } from "@/utils/interfaces";
+import { Box } from '@chakra-ui/react';
+import EducationCard from '@/components/custom/educationCard';
+import { educationImagesMapping } from '@/utils/imagesMapping';
+import { fetchData, normalizedData, sortData } from '@/utils/helpers';
+import { NormalizedData, Data } from '@/utils/interfaces';
 
 export default async function Education() {
-  const data: Data[] = await fetchData("education");
+  const data: Data[] = await fetchData('education');
   const normalizedAndSortedData: NormalizedData[] = sortData(
     normalizedData(data)
   );

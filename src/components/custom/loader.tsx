@@ -1,11 +1,11 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex } from '@chakra-ui/react';
 
 const SpiralSpinner = () => {
-  const letters = "Loading";
-  const points = "...";
+  const letters = 'Loading';
+  const points = '...';
 
   return (
-     <Flex
+    <Flex
       align="center"
       justify="start"
       height="400px"
@@ -18,9 +18,9 @@ const SpiralSpinner = () => {
         position="relative"
         width="300px"
         height="300px"
-        alignContent={"center"}
+        alignContent={'center'}
         css={{
-          animation: "spin 3.5s linear infinite",
+          animation: 'spin 3.5s linear infinite',
         }}
       >
         {Array.from({ length: 24 }).map((_, index) => (
@@ -33,14 +33,14 @@ const SpiralSpinner = () => {
             transform={`rotate(${index * 15}deg) translate(60px)`}
             css={{
               animation:
-                "grow 3s ease-in-out infinite, colorChange 5s linear infinite",
+                'grow 3s ease-in-out infinite, colorChange 5s linear infinite',
             }}
           />
         ))}
       </Flex>
 
-      <Flex position="relative" mt={8} >
-        {letters.split("").map((char, charIndex) => (
+      <Flex position="relative" mt={8}>
+        {letters.split('').map((char, charIndex) => (
           <Box
             key={charIndex}
             fontSize="xl"
@@ -51,7 +51,7 @@ const SpiralSpinner = () => {
             {char}
           </Box>
         ))}
-        {points.split("").map((char, charIndex) => (
+        {points.split('').map((char, charIndex) => (
           <Box
             key={charIndex}
             fontSize="xl"

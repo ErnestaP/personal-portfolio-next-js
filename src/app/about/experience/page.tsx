@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { Box, HStack, VStack } from "@chakra-ui/react";
-import ExperienceCard from "@/components/custom/workExperienceCard";
-import ColorMap from "@/components/custom/colorMap";
-import { fetchData, normalizedData, sortData } from "@/utils/helpers";
-import { experienceImagesMapping } from "@/utils/imagesMapping";
-import { ExperienceNormalizedData } from "@/utils/interfaces";
+import { Box, HStack, VStack } from '@chakra-ui/react';
+import ExperienceCard from '@/components/custom/workExperienceCard';
+import ColorMap from '@/components/custom/colorMap';
+import { fetchData, normalizedData, sortData } from '@/utils/helpers';
+import { experienceImagesMapping } from '@/utils/imagesMapping';
+import { ExperienceNormalizedData } from '@/utils/interfaces';
 
 export default async function Experience() {
-  const data = await fetchData("experience");
+  const data = await fetchData('experience');
   const normalizedAndSortedData: ExperienceNormalizedData[] = sortData(
     normalizedData(data)
   );
@@ -20,8 +20,8 @@ export default async function Experience() {
         gap={4}
         p={2}
         paddingBottom={4}
-        alignItems={"baseline"}
-        alignSelf={"baseline"}
+        alignItems={'baseline'}
+        alignSelf={'baseline'}
       >
         <ColorMap />
       </HStack>

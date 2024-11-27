@@ -1,41 +1,41 @@
-import InitialImage from "@/components/custom/initialImage";
-import { Flex, VStack, Text } from "@chakra-ui/react";
-import Footer from "@/components/custom/footer";
+import InitialImage from '@/components/custom/initialImage';
+import { Flex, VStack, Text } from '@chakra-ui/react';
+import Footer from '@/components/custom/footer';
 
 export default function Page() {
   return (
     <>
       <Flex
         direction={{
-          base: "column",
-          sm: "column",
-          md: "column",
-          lg: "row",
-          xl: "row",
-          "2xl": "row",
+          base: 'column',
+          sm: 'column',
+          md: 'column',
+          lg: 'row',
+          xl: 'row',
+          '2xl': 'row',
         }}
         justify="center"
         align="center"
       >
         <InitialImage />
         <VStack
-          overflow={{ base: "visible", sm: "visible", lg: "auto", xl: "auto" }}
+          overflow={{ base: 'visible', sm: 'visible', lg: 'auto', xl: 'auto' }}
           flex="1"
           overflowY="visible"
           p={4}
           justify="space-between"
           align="baseline"
-          height={"100%"}
+          height={'100%'}
         >
           <VStack align="start" flex={3} justify="end">
             <Text
               fontSize={{
-                base: "smallTitle",
-                sm: "smallTitle",
-                md: "mediumTitle",
-                lg: "largeTitle",
-                xl: "extraLargeTitle",
-                "2xl": "extraExtraLargeTitle",
+                base: 'smallTitle',
+                sm: 'smallTitle',
+                md: 'mediumTitle',
+                lg: 'largeTitle',
+                xl: 'extraLargeTitle',
+                '2xl': 'extraExtraLargeTitle',
               }}
               fontFamily="initialTitle"
               fontWeight="100"
@@ -44,17 +44,17 @@ export default function Page() {
             </Text>
             <Text
               fontSize={{
-                base: "smallTitle",
-                sm: "smallTitle",
-                md: "mediumTitle",
-                lg: "largeTitle",
-                xl: "extraLargeTitle",
-                "2xl": "extraExtraLargeTitle",
+                base: 'smallTitle',
+                sm: 'smallTitle',
+                md: 'mediumTitle',
+                lg: 'largeTitle',
+                xl: 'extraLargeTitle',
+                '2xl': 'extraExtraLargeTitle',
               }}
               fontFamily="initialTitle"
               fontWeight="100"
               color="secondary"
-              _dark={{ color: "active" }}
+              _dark={{ color: 'active' }}
             >
               Ernesta
             </Text>
