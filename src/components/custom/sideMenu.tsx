@@ -58,6 +58,7 @@ export function SideMenu(props: {
           filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
           backgroundRepeat="no-repeat"
           backgroundColor={'rgba(255, 255, 255, 0.9)'}
+          border={"1px #ebedea solid"}
           backgroundBlendMode="overlay"
           backgroundSize="cover"
           gap={{ base: '3', md: '3', lg: '5', xl: '5', '2xl': '5' }}

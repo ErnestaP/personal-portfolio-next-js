@@ -15,7 +15,6 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
   const sideMenuConfig: SideMenuConfigProps = {
     projects: {
       title: 'Projects',
-      colorMap: true,
       buttons: [
         {
           label: 'Professional',
@@ -47,10 +46,12 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
   };
   const currentPage =
     basePage in sideMenuConfig ? sideMenuConfig[basePage] : null;
+  const showColorMap =
+    pathname.includes('experience') || pathname.includes('projects');
   return (
     <>
       {currentPage ? (
-        <Flex gap={4} flexDir="column" width={'100%'} alignItems={'stretch'}>
+        <Flex gap={2} flexDir="column" width={'100%'} alignItems={'stretch'}>
           <HStack
             align={{
               base: 'center',
@@ -105,9 +106,11 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                 '2xl': 'flex',
               }}
               align={'center'}
+              justify={'center'}
               padding={4}
+              paddingBottom={0}
             >
-              {currentPage.colorMap && <ColorMap />}
+              {showColorMap && <ColorMap />}
             </Flex>
           </HStack>
           <HStack height={'90%'} align={'start'}>
