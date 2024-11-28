@@ -12,7 +12,14 @@ export default async function Professional() {
   return (
     <>
       <HStack
-        flex={1}
+        display={{
+          base: 'flex',
+          sm: 'flex',
+          md: 'flex',
+          lg: 'none',
+          xl: 'none',
+          '2xl': 'none',
+        }}
         gap={4}
         p={2}
         paddingBottom={4}

@@ -43,6 +43,7 @@ export interface SideMenuButtonsProps {
 export interface SideMenuProps {
   title: string;
   buttons: SideMenuButtonsProps[];
+  colorMap?: boolean;
 }
 
 export interface SideMenuConfigProps {

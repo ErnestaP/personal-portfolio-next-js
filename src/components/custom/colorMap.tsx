@@ -11,7 +11,7 @@ export default function ColorMap() {
       direction={{
         base: 'column',
         sm: 'column',
-        md: 'column',
+        md: 'row',
         lg: 'row',
         xl: 'row',
         '2xl': 'row',

@@ -12,7 +12,14 @@ export default async function Personal() {
   return (
     <>
       <HStack
-        flex={1}
+        display={{
+          base: 'flex',
+          sm: 'flex',
+          md: 'flex',
+          lg: 'none',
+          xl: 'none',
+          '2xl': 'none',
+        }}
         gap={4}
         p={2}
         paddingBottom={4}
@@ -22,7 +29,7 @@ export default async function Personal() {
         <ColorMap />
       </HStack>
       {data.map((project: ProjectsData) => (
-        <Box key={project.id} flex={1} width={'100%'}>
+        <Box key={project.id} width={'100%'}>
           <ProjectCard
             id={project.id}
             title={project.title}

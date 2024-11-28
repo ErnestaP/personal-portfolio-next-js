@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { VStack, Box, Text, HStack, Flex } from '@chakra-ui/react';
 import { SideMenu } from '@/components/custom/sideMenu';
 import { SideMenuConfigProps } from '@/utils/interfaces';
+import ColorMap from '@/components/custom/colorMap';
 
 export default function ContentLayout(props: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
   const sideMenuConfig: SideMenuConfigProps = {
     projects: {
       title: 'Projects',
+      colorMap: true,
       buttons: [
         {
           label: 'Professional',
@@ -92,18 +94,21 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                 <SideMenu buttons={currentPage.buttons} onlyButtons />
               </HStack>
             </VStack>
-            <Box
+            <Flex
               flex={6}
-
               display={{
                 base: 'none',
                 sm: 'none',
                 md: 'none',
-                lg: 'block',
-                xl: 'block',
-                '2xl': 'block',
+                lg: 'flex',
+                xl: 'flex',
+                '2xl': 'flex',
               }}
-            ></Box>
+              align={'center'}
+              padding={4}
+            >
+              {currentPage.colorMap && <ColorMap />}
+            </Flex>
           </HStack>
           <HStack height={'90%'} align={'start'}>
             <Box
@@ -131,10 +136,11 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               paddingLeft={2}
             >
               <VStack
-              width={'-webkit-fill-available'}
-               overflow={'auto'}
-               overflowX={'hidden'}
-               height={"100%"}>
+                width={'-webkit-fill-available'}
+                overflow={'auto'}
+                overflowX={'hidden'}
+                height={'100%'}
+              >
                 {props.children}
               </VStack>
             </HStack>
