@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
 
-import { VStack, Box, Button } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { VStack, Box, Button } from '@chakra-ui/react';
+
 import { FilterProps, SideMenuButtonsProps } from '@/utils/interfaces';
 
 function SideMenuButtons(props: {

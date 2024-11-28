@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+
 import {
   Card,
   Heading,
@@ -11,9 +12,10 @@ import {
   IconButton,
   Flex,
 } from '@chakra-ui/react';
-import { Tag } from '@/components/ui/tag';
-import { getColorBySkill } from '@/utils/colorsMap';
 import { FaGithub } from 'react-icons/fa';
+import { Tag } from '@/components/ui/tag';
+
+import { getColorBySkill } from '@/utils/colorsMap';
 import { ProjectsData } from '@/utils/interfaces';
 
 const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {

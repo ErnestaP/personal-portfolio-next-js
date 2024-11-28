@@ -1,4 +1,5 @@
 import React from 'react';
+
 import NextImage from 'next/image';
 import { Image } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';

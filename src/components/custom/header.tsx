@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
 
+import { usePathname } from 'next/navigation';
 import { HStack, Button } from '@chakra-ui/react';
+
 import { ColorModeButton } from '@/components/ui/color-mode';
 import Link from 'next/link';
 

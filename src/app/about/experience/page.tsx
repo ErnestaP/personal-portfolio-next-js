@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Box, HStack, VStack } from '@chakra-ui/react';
+
 import ExperienceCard from '@/components/custom/workExperienceCard';
 import ColorMap from '@/components/custom/colorMap';
 import { fetchData, normalizedData, sortData } from '@/utils/helpers';

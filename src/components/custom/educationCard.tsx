@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Card,
   Heading,
@@ -10,6 +11,7 @@ import {
   Separator,
 } from '@chakra-ui/react';
 import NextImage from 'next/image';
+
 import { EducationCardProps } from '@/utils/interfaces';
 
 const EducationCard: React.FC<EducationCardProps> = ({

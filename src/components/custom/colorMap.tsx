@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Stack, Flex, Box, Text, HStack } from '@chakra-ui/react';
+
 import { groupColorMap } from '@/utils/colorsMap';
 import { Tag } from '@/components/ui/tag';
 

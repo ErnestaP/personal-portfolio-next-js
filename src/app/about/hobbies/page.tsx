@@ -1,14 +1,16 @@
 import React from 'react';
+
 import 'keen-slider/keen-slider.min.css';
 import { Box, Flex } from '@chakra-ui/react';
-import PhotoLibrary from '@/components/custom/photoLibrary';
+
+import PhotoGallery from '@/components/custom/photoGallery';
 import { fetchData } from '@/utils/helpers';
 
 export default async function Hobbies() {
   const hobbies = await fetchData('hobbies');
   return (
     <Flex
-      height="-webkit-fit-content"
+      height="90vh"
       direction={{
         base: 'column',
         sm: 'column',
@@ -29,7 +31,7 @@ export default async function Hobbies() {
         maxW={{
           base: '100ch',
           sm: '100ch',
-          md: '120ch',
+          md: '100ch',
           lg: '120ch',
           xl: '130ch',
           '2xl': '130ch',
@@ -37,7 +39,7 @@ export default async function Hobbies() {
       >
         {hobbies && hobbies.length !== 0 && hobbies[0].description}
       </Box>
-      <PhotoLibrary />
+      <PhotoGallery />
     </Flex>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { VStack, Box } from '@chakra-ui/react';
+
 import Icons from '@/components/custom/icons';
 
 export default function SideBar() {

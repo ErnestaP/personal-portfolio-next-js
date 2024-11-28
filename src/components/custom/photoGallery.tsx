@@ -73,9 +73,8 @@ const WheelControls = (
   });
 };
 
-const PhotoLibrary: React.FC = () => {
+const PhotoGallery: React.FC = () => {
   const [loadedImages, setLoadedImages] = useState<number>(0);
-  const [visibility, setVisibility] = useState<'visible' | 'hidden'>('hidden');
   const [showIndicator, setShowIndicator] = useState<boolean>(false);
 
   const handleImageLoad = () => {
@@ -94,16 +93,13 @@ const PhotoLibrary: React.FC = () => {
   useEffect(() => {
     if (loadedImages === photos.length - 3) {
       setShowIndicator(true);
-      setVisibility('visible');
     } else if (loadedImages < photos.length - 3) {
-      setVisibility('hidden');
     }
   }, [loadedImages]);
 
   useEffect(() => {
     setLoadedImages(0);
     setShowIndicator(true);
-    setVisibility('visible');
   }, []);
 
   return (
@@ -125,7 +121,6 @@ const PhotoLibrary: React.FC = () => {
           `}
         </style>
 
-        {/* Scroll Indicator */}
         {showIndicator && (
           <Box
             position="absolute"
@@ -172,27 +167,36 @@ const PhotoLibrary: React.FC = () => {
           >
             {photos.map((photo, index) => (
               <div key={index} className="keen-slider__slide number-slide1">
-                <Flex direction={photo.flexDirection}>
-                  {loadedImages < photos.length - 1 && (
+                <Flex
+                  direction={photo.flexDirection}
+                  height="500px"
+                  width="100%"
+                  position="relative"
+                >
+                  {loadedImages <= index && (
                     <Skeleton
-                      height={{
-                        base: 300,
-                        sm: 300,
-                        md: 300,
-                        lg: 500,
-                        xl: 500,
-                        '2xl': 950,
-                      }}
-                      width={'100%'}
+                      height="100%"
+                      width="100%"
+                      position="absolute"
+                      top={0}
+                      left={0}
+                      zIndex={1}
                     />
                   )}
-
-                  <Box flex={1} key={photo.photoLink} visibility={visibility}>
+                  <Box
+                    flex={1}
+                    key={photo.photoLink}
+                    style={{
+                      opacity: loadedImages > index ? 1 : 0,
+                      transition: 'opacity 0.5s ease-in-out',
+                    }}
+                  >
                     <Image asChild alt="Picture of the author">
                       <NextImage
                         quality={80}
                         fill={true}
-                        priority
+                        loading={index >= 2 ? 'lazy' : 'eager'}
+                        priority={index < 2}
                         onLoad={handleImageLoad}
                         src={photo.photoLink}
                         alt="Picture of the author"
@@ -209,4 +213,4 @@ const PhotoLibrary: React.FC = () => {
   );
 };
 
-export default PhotoLibrary;
+export default PhotoGallery;

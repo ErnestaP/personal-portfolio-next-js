@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { VStack, Text, Box, HStack } from '@chakra-ui/react';
+
 import Icons from '@/components/custom/icons';
 
 export default function Footer() {

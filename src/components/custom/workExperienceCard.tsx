@@ -1,4 +1,5 @@
 import React from 'react';
+
 import NextImage from 'next/image';
 import {
   Card,
@@ -12,6 +13,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { Tag } from '@/components/ui/tag';
+
 import { getColorBySkill } from '@/utils/colorsMap';
 import { ExperienceCardProps } from '@/utils/interfaces';
 

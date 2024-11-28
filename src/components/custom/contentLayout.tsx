@@ -66,12 +66,15 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                   fontSize={{
                     base: '25px',
                     sm: '25px',
-                    md: '30px',
+                    md: '25px',
                     lg: '30px',
                     xl: '35px',
                     '2xl': '40px',
                   }}
                   textDecoration="underline"
+                  whiteSpace="nowrap"
+                  overflow="visible"
+                  textOverflow="clip"
                 >
                   {currentPage.title}
                 </Text>
@@ -80,7 +83,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                 display={{
                   base: 'flex',
                   sm: 'flex',
-                  md: 'none',
+                  md: 'flex',
                   lg: 'none',
                   xl: 'none',
                   '2xl': 'none',
@@ -94,7 +97,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               display={{
                 base: 'none',
                 sm: 'none',
-                md: 'block',
+                md: 'none',
                 lg: 'block',
                 xl: 'block',
                 '2xl': 'block',
@@ -106,7 +109,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               display={{
                 base: 'none',
                 sm: 'none',
-                md: 'block',
+                md: 'none',
                 lg: 'block',
                 xl: 'block',
                 '2xl': 'block',
@@ -125,7 +128,9 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               paddingRight={2}
               paddingLeft={2}
             >
-              <VStack width={'-webkit-fill-available'}>{props.children}</VStack>
+              <VStack width={'-webkit-fill-available'} overflow={'scroll'}>
+                {props.children}
+              </VStack>
             </HStack>
           </HStack>
         </Flex>
