@@ -94,6 +94,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
             </VStack>
             <Box
               flex={6}
+
               display={{
                 base: 'none',
                 sm: 'none',
@@ -115,6 +116,7 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
                 '2xl': 'block',
               }}
               flex={1}
+              paddingBottom={2}
               height={'100%'}
             >
               <SideMenu buttons={currentPage.buttons} />
@@ -123,12 +125,16 @@ export default function ContentLayout(props: { children: React.ReactNode }) {
               flex={6}
               align={'start'}
               height={'100%'}
-              overflowY="auto"
-              paddingBottom={8}
+              overflow="hidden"
+              paddingBottom={2}
               paddingRight={2}
               paddingLeft={2}
             >
-              <VStack width={'-webkit-fill-available'} overflow={'scroll'}>
+              <VStack
+              width={'-webkit-fill-available'}
+               overflow={'auto'}
+               overflowX={'hidden'}
+               height={"100%"}>
                 {props.children}
               </VStack>
             </HStack>
