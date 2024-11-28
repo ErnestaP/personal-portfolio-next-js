@@ -169,7 +169,7 @@ const PhotoGallery: React.FC = () => {
               <div key={index} className="keen-slider__slide number-slide1">
                 <Flex
                   direction={photo.flexDirection}
-                  height="500px"
+                  height="100%"
                   width="100%"
                   position="relative"
                 >

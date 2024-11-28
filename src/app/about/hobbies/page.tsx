@@ -10,7 +10,7 @@ export default async function Hobbies() {
   const hobbies = await fetchData('hobbies');
   return (
     <Flex
-      height="90vh"
+      height={"100%"}
       direction={{
         base: 'column',
         sm: 'column',
