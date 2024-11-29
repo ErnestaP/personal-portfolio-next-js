@@ -1,17 +1,17 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
-import { Data, NormalizedData, TimeStampProps } from './interfaces';
+import { Data, DataForSorting, TimeStampProps } from './interfaces';
 
 export const formatDate = (timestamp: TimeStampProps) => {
   const date = new Date(timestamp.seconds * 1000);
   return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 };
 
-export const sortData = (data: NormalizedData[]): NormalizedData[] =>
+export const sortData = (data: DataForSorting[]): any[] =>
   data.sort((a, b) => {
     const dateA = a.dateFrom?.seconds || 0;
     const dateB = b.dateFrom?.seconds || 0;
-    return dateA - dateB;
+    return dateB - dateA;
   });
 
 export const normalizedData = (

@@ -111,5 +111,10 @@ export interface FilterProps {
 }
 
 export type Data = EducationData & ExperienceData & ProjectsData;
-
 export type NormalizedData = EducationNormalizedData & ExperienceNormalizedData;
+
+export interface DataForSorting {
+  dateFrom: TimeStampProps;
+  dateTo: TimeStampProps;
+  [key: string]: any;
+}

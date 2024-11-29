@@ -86,10 +86,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               </Image>
             </Box>
             <VStack align={'start'} flex={5}>
-              <HStack>
-                <Box fontWeight={600}>{location},</Box>
-                <Box fontWeight={600}>{date}</Box>
-              </HStack>
+              <Box fontWeight={600}>{location},</Box>
+              <Box fontWeight={600}>{date}</Box>
               <Box fontWeight={600}>{title}</Box>
               <Box fontWeight={600}>{team}</Box>
               <Separator />

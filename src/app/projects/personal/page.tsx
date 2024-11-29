@@ -9,6 +9,7 @@ import { ProjectsData } from '@/utils/interfaces';
 
 export default async function Personal() {
   const data: ProjectsData[] = await fetchData('personal-projects');
+
   return (
     <>
       <HStack
