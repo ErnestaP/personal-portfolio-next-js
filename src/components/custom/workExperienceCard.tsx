@@ -96,7 +96,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
               <Flex
                 gap={2}
-                wrap="wrap" // Enables wrapping for child elements
+                wrap="wrap"
                 direction={{
                   base: 'row',
                   sm: 'row',
@@ -105,21 +105,21 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                   xl: 'row',
                   '2xl': 'row',
                 }}
-                justify="flex-start" // Align items on smaller screens
+                justify="flex-start"
               >
                 {skills.map((skill, index) => (
                   <Box
                     key={index}
                     flex={{
-                      base: '1 1 calc(33.333% - 8px)', // Each tag takes up a third of the row minus the gap
+                      base: '1 1 calc(33.333% - 8px)',
                       sm: '1 1 calc(33.333% - 8px)',
                       md: '1 1 calc(33.333% - 8px)',
-                      lg: '1 1 auto', // For larger screens, fallback to auto width
+                      lg: '1 1 auto',
                       xl: '1 1 auto',
                       '2xl': '1 1 auto',
                     }}
                     maxWidth={{
-                      base: 'calc(33.333% - 8px)', // Ensures a max of 3 tags per row
+                      base: 'calc(33.333% - 8px)',
                       sm: 'calc(33.333% - 8px)',
                       md: 'calc(33.333% - 8px)',
                       lg: 'none',
@@ -137,7 +137,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                         '2xl': 'xl',
                       }}
                       width="100%"
-                      justifyContent={'center'} // Ensures the tag spans the width of its parent
+                      justifyContent={'center'}
                       colorPalette={getColorBySkill(skill) || 'transparent'}
                     >
                       {skill}
