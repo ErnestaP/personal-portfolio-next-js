@@ -11,6 +11,7 @@ export default async function Education() {
   const normalizedAndSortedData: NormalizedData[] = sortData(
     normalizedData(data)
   );
+
   return (
     <>
       {normalizedAndSortedData.map((university: NormalizedData) => (

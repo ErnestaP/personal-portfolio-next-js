@@ -1,33 +1,16 @@
 import React from 'react';
 
-import { Box, HStack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import ProjectCard from '@/components/custom/projectCard';
-import ColorMap from '@/components/custom/colorMap';
 import { fetchData } from '@/utils/helpers';
 import { ProjectsData } from '@/utils/interfaces';
+import CardWrapperWithColorMap from '@/components/custom/cardWrapperWithColorMap';
 
 export default async function Professional() {
   const data: ProjectsData[] = await fetchData('professional-projects');
   return (
-    <>
-      <HStack
-        display={{
-          base: 'flex',
-          sm: 'flex',
-          md: 'flex',
-          lg: 'none',
-          xl: 'none',
-          '2xl': 'none',
-        }}
-        gap={4}
-        p={2}
-        paddingBottom={4}
-        alignItems={'baseline'}
-        alignSelf={'baseline'}
-      >
-        <ColorMap />
-      </HStack>
+    <CardWrapperWithColorMap>
       {data.map((project: ProjectsData) => (
         <Box key={project.id}>
           <ProjectCard
@@ -38,6 +21,6 @@ export default async function Professional() {
           />
         </Box>
       ))}
-    </>
+    </CardWrapperWithColorMap>
   );
 }

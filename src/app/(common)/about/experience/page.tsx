@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import ExperienceCard from '@/components/custom/workExperienceCard';
-import ColorMap from '@/components/custom/colorMap';
 import { fetchData, normalizedData, sortData } from '@/utils/helpers';
 import { experienceImagesMapping } from '@/utils/imagesMapping';
 import { ExperienceNormalizedData } from '@/utils/interfaces';
+import CardWrapperWithColorMap from '@/components/custom/cardWrapperWithColorMap';
 
 export default async function Experience() {
   const data = await fetchData('experience');
@@ -15,24 +15,7 @@ export default async function Experience() {
   );
 
   return (
-    <VStack>
-      <HStack
-        display={{
-          base: 'flex',
-          sm: 'flex',
-          md: 'flex',
-          lg: 'none',
-          xl: 'none',
-          '2xl': 'none',
-        }}
-        gap={4}
-        p={2}
-        paddingBottom={4}
-        alignItems={'baseline'}
-        alignSelf={'baseline'}
-      >
-        <ColorMap />
-      </HStack>
+    <CardWrapperWithColorMap>
       {normalizedAndSortedData.map((experience: ExperienceNormalizedData) => (
         <Box flex={1} key={experience.id}>
           <ExperienceCard
@@ -47,6 +30,6 @@ export default async function Experience() {
           />
         </Box>
       ))}
-    </VStack>
+    </CardWrapperWithColorMap>
   );
 }
