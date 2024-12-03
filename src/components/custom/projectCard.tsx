@@ -23,7 +23,7 @@ const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
     <Stack align={'start'} width={'-webkit-fill-available'}>
       <Card.Root size="sm" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
-          <Heading>{title}</Heading>
+          <Heading fontFamily="cardFont">{title}</Heading>
         </Card.Header>
         <Card.Body
           color="fg.muted"

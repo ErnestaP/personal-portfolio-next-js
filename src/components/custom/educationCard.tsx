@@ -26,7 +26,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
     <Stack align={'start'} width={'-webkit-fill-available'}>
       <Card.Root size="lg" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
-          <Heading>{title}</Heading>
+          <Heading fontFamily="cardFont">{title}</Heading>
           <Separator />
         </Card.Header>
         <Card.Body color="fg.muted" textAlign={'justify'}>

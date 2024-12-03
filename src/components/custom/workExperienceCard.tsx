@@ -4,7 +4,6 @@ import NextImage from 'next/image';
 import {
   Card,
   Heading,
-  HStack,
   Stack,
   Box,
   VStack,
@@ -42,7 +41,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     >
       <Card.Root size="sm" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
-          <Heading>{employer}</Heading>
+          <Heading fontFamily="cardFont">{employer}</Heading>
           <Separator />
         </Card.Header>
         <Card.Body
