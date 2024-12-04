@@ -22,15 +22,6 @@ export interface EducationData {
   dateTo: TimeStampProps;
 }
 
-export interface EducationCardProps {
-  title: string;
-  degree: string;
-  field: string;
-  description: string;
-  image: string;
-  date: string;
-}
-
 export interface SideMenuButtonsProps {
   label: string;
   href: string;
@@ -56,17 +47,6 @@ export interface ExperienceData {
   skills: string[];
   dateFrom: TimeStampProps;
   dateTo: TimeStampProps;
-}
-
-export interface ExperienceCardProps {
-  employer: string;
-  team?: string;
-  title: string;
-  date: string;
-  location: string;
-  description: string;
-  image: string;
-  skills: string[];
 }
 
 export interface TimeStampProps {

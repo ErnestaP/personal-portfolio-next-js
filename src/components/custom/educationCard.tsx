@@ -12,8 +12,14 @@ import {
 } from '@chakra-ui/react';
 import NextImage from 'next/image';
 
-import { EducationCardProps } from '@/utils/interfaces';
-
+export interface EducationCardProps {
+  title: string;
+  degree: string;
+  field: string;
+  description: string;
+  image: string;
+  date: string;
+}
 const EducationCard: React.FC<EducationCardProps> = ({
   title,
   degree,

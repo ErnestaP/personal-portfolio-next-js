@@ -16,7 +16,15 @@ import { FaGithub } from 'react-icons/fa';
 import { Tag } from '@/components/ui/tag';
 
 import { getColorBySkill } from '@/utils/colorsMap';
-import { ProjectsData } from '@/utils/interfaces';
+import { SkillSet } from '@/utils/interfaces';
+
+export interface ProjectsData {
+  id: string;
+  title: string;
+  employer?: string;
+  role?: string;
+  skillSet: SkillSet[];
+}
 
 const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
   return (

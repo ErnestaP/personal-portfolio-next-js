@@ -14,8 +14,17 @@ import {
 import { Tag } from '@/components/ui/tag';
 
 import { getColorBySkill } from '@/utils/colorsMap';
-import { ExperienceCardProps } from '@/utils/interfaces';
 
+export interface ExperienceCardProps {
+  employer: string;
+  team?: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: string;
+  skills: string[];
+}
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   employer,
   team,
