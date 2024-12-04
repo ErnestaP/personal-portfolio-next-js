@@ -73,14 +73,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               borderRadius={8}
               filter={{ base: 'invert(1)', _dark: 'invert(0)' }}
             >
-              <Image asChild alt="Picture of the author">
+              <Image asChild alt={`Experience image: ${title}`}>
                 <NextImage
                   quality={100}
                   width={300}
                   height={300}
                   priority
                   src={image}
-                  alt="Picture of the author"
+                  alt={`Experience image: ${title}`}
                 />
               </Image>
             </Box>

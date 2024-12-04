@@ -55,13 +55,13 @@ const EducationCard: React.FC<EducationCardProps> = ({
               borderRadius={8}
               filter={{ base: 'invert(1)', _dark: 'invert(0)' }}
             >
-              <Image asChild alt="Picture of the author">
+              <Image asChild alt={`Education image: ${title}`}>
                 <NextImage
                   quality={100}
                   width={300}
                   height={300}
                   src={image}
-                  alt="Picture of the author"
+                  alt={`Education image: ${title}`}
                 />
               </Image>
             </Box>
