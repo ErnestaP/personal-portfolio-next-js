@@ -4,7 +4,6 @@ import NextImage from 'next/image';
 import {
   Card,
   Heading,
-  HStack,
   Stack,
   Box,
   VStack,
@@ -15,8 +14,17 @@ import {
 import { Tag } from '@/components/ui/tag';
 
 import { getColorBySkill } from '@/utils/colorsMap';
-import { ExperienceCardProps } from '@/utils/interfaces';
 
+export interface ExperienceCardProps {
+  employer: string;
+  team?: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: string;
+  skills: string[];
+}
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   employer,
   team,
@@ -42,7 +50,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     >
       <Card.Root size="sm" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
-          <Heading>{employer}</Heading>
+          <Heading fontFamily="cardFont">{employer}</Heading>
           <Separator />
         </Card.Header>
         <Card.Body
@@ -74,14 +82,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               borderRadius={8}
               filter={{ base: 'invert(1)', _dark: 'invert(0)' }}
             >
-              <Image asChild alt="Picture of the author">
+              <Image asChild alt={`Experience image: ${title}`}>
                 <NextImage
                   quality={100}
                   width={300}
                   height={300}
                   priority
                   src={image}
-                  alt="Picture of the author"
+                  alt={`Experience image: ${title}`}
                 />
               </Image>
             </Box>

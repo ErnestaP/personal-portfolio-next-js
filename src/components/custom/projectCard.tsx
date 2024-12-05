@@ -16,14 +16,22 @@ import { FaGithub } from 'react-icons/fa';
 import { Tag } from '@/components/ui/tag';
 
 import { getColorBySkill } from '@/utils/colorsMap';
-import { ProjectsData } from '@/utils/interfaces';
+import { SkillSet } from '@/utils/interfaces';
+
+export interface ProjectsData {
+  id: string;
+  title: string;
+  employer?: string;
+  role?: string;
+  skillSet: SkillSet[];
+}
 
 const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
   return (
     <Stack align={'start'} width={'-webkit-fill-available'}>
       <Card.Root size="sm" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
-          <Heading>{title}</Heading>
+          <Heading fontFamily="cardFont">{title}</Heading>
         </Card.Header>
         <Card.Body
           color="fg.muted"

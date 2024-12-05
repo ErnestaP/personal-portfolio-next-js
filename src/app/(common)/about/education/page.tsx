@@ -1,19 +1,26 @@
 import React from 'react';
 
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import EducationCard from '@/components/custom/educationCard';
 import { educationImagesMapping } from '@/utils/imagesMapping';
 import { fetchData, normalizedData, sortData } from '@/utils/helpers';
-import { NormalizedData, Data } from '@/utils/interfaces';
+import { EducationData } from '@/utils/interfaces';
+import NoDataAvailable from '@/components/custom/noDataAvailable';
 
 export default async function Education() {
-  const data: Data[] = await fetchData('education');
-  const normalizedAndSortedData: NormalizedData[] = sortData(
-    normalizedData(data)
-  );
+  const data: EducationData[] = await fetchData('education');
+  if (data.length === 0) {
+    return (
+      <NoDataAvailable>
+        <Text>No education data available.</Text>
+      </NoDataAvailable>
+    );
+  }
+  const normalizedAndSortedData = sortData(normalizedData(data));
+
   return (
     <>
-      {normalizedAndSortedData.map((university: NormalizedData) => (
+      {normalizedAndSortedData.map((university) => (
         <Box key={university.title}>
           <EducationCard
             title={university.title}

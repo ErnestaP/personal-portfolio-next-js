@@ -1,13 +1,21 @@
 import React from 'react';
 
 import 'keen-slider/keen-slider.min.css';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
 import PhotoGallery from '@/components/custom/photoGallery';
 import { fetchData } from '@/utils/helpers';
+import NoDataAvailable from '@/components/custom/noDataAvailable';
 
 export default async function Hobbies() {
   const hobbies = await fetchData('hobbies');
+  if (hobbies.length === 0) {
+    return (
+      <NoDataAvailable>
+        <Text>No hobbies data available.</Text>
+      </NoDataAvailable>
+    );
+  }
   return (
     <Flex
       height={'100%'}

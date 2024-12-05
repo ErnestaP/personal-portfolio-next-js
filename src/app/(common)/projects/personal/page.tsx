@@ -1,34 +1,25 @@
 import React from 'react';
 
-import { Box, HStack } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 import ProjectCard from '@/components/custom/projectCard';
-import ColorMap from '@/components/custom/colorMap';
 import { fetchData } from '@/utils/helpers';
 import { ProjectsData } from '@/utils/interfaces';
+import CardWrapperWithColorMap from '@/components/custom/cardWrapperWithColorMap';
+import NoDataAvailable from '@/components/custom/noDataAvailable';
 
 export default async function Personal() {
   const data: ProjectsData[] = await fetchData('personal-projects');
+  if (data.length === 0) {
+    return (
+      <NoDataAvailable>
+        <Text>No personal projects data available.</Text>
+      </NoDataAvailable>
+    );
+  }
 
   return (
-    <>
-      <HStack
-        display={{
-          base: 'flex',
-          sm: 'flex',
-          md: 'flex',
-          lg: 'none',
-          xl: 'none',
-          '2xl': 'none',
-        }}
-        gap={4}
-        p={2}
-        paddingBottom={4}
-        alignItems={'baseline'}
-        alignSelf={'baseline'}
-      >
-        <ColorMap />
-      </HStack>
+    <CardWrapperWithColorMap>
       {data.map((project: ProjectsData) => (
         <Box key={project.id} width={'100%'}>
           <ProjectCard
@@ -38,6 +29,6 @@ export default async function Personal() {
           />
         </Box>
       ))}
-    </>
+    </CardWrapperWithColorMap>
   );
 }
