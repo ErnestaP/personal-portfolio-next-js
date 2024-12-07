@@ -12,7 +12,8 @@
     "dateTo": {
       "seconds": 1559347200,
       "nanoseconds": 0
-    }
+    },
+    "date": "2015 September"
   },
   {
     "title": "Westbridge University",
@@ -27,7 +28,8 @@
     "dateTo": {
       "seconds": 1622505600,
       "nanoseconds": 0
-    }
+    },
+    "date": "2021 June"
   },
   {
     "title": "Lakeview Academy",
@@ -42,6 +44,7 @@
     "dateTo": {
       "seconds": 1746124800,
       "nanoseconds": 0
-    }
+    },
+    "date": "2021 September"
   }
 ]

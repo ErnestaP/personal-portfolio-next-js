@@ -55,22 +55,24 @@ const EducationCard: React.FC<EducationCardProps> = ({
               '2xl': '18px',
             }}
           >
-            <Box
-              flex={1}
-              padding={4}
-              borderRadius={8}
-              filter={{ base: 'invert(1)', _dark: 'invert(0)' }}
-            >
-              <Image asChild alt={`Education image: ${title}`}>
-                <NextImage
-                  quality={100}
-                  width={300}
-                  height={300}
-                  src={image}
-                  alt={`Education image: ${title}`}
-                />
-              </Image>
-            </Box>
+            {image && (
+              <Box
+                flex={1}
+                padding={4}
+                borderRadius={8}
+                filter={{ base: 'invert(1)', _dark: 'invert(0)' }}
+              >
+                <Image asChild alt={`Education image: ${title}`}>
+                  <NextImage
+                    quality={100}
+                    width={300}
+                    height={300}
+                    src={image}
+                    alt={`Education image: ${title}`}
+                  />
+                </Image>
+              </Box>
+            )}
             <VStack align={'start'} flex={5}>
               <Box fontWeight={600}>{degree}</Box>
               <Box fontWeight={600}>{field}</Box>
