@@ -3,8 +3,16 @@ import { db } from '@/app/firebaseConfig';
 import { Data, HasDateFromDateTo, TimeStampProps } from './interfaces';
 
 export const formatDate = (timestamp: TimeStampProps) => {
-  const date = new Date(timestamp.seconds * 1000);
-  return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  try {
+    if (!timestamp || typeof timestamp.seconds !== 'number') {
+      throw new Error('Invalid timestamp object');
+    }
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  } catch (e) {
+    console.error(`Error was raised while formatting date! ${e}`);
+    return 'Invalid Date';
+  }
 };
 
 export const sortData = <T extends HasDateFromDateTo>(data: T[]): T[] =>

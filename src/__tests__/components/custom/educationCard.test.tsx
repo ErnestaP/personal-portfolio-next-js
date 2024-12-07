@@ -48,7 +48,7 @@ test('Education card component displays correct education information', async ()
   );
   expect(description).toBeInTheDocument();
 
-  const date = await screen.findByText(/2015 September/i);
+  const date = await screen.findByText(/September 2015/i);
   expect(date).toBeInTheDocument();
 });
 
@@ -73,7 +73,7 @@ test('Education card component displays the component, when the image url is mis
   );
   expect(description).toBeInTheDocument();
 
-  const date = await screen.findByText(/2021 June/i);
+  const date = await screen.findByText(/June 2021/i);
   expect(date).toBeInTheDocument();
 
   const image = screen.queryByAltText('Education image: Westbridge University');
