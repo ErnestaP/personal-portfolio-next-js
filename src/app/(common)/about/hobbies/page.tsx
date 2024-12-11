@@ -6,9 +6,10 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import PhotoGallery from '@/components/custom/photoGallery';
 import { fetchData } from '@/utils/helpers';
 import NoDataAvailable from '@/components/custom/noDataAvailable';
+import { Hobbies as HobbiesProps } from '@/utils/interfaces';
 
 export default async function Hobbies() {
-  const hobbies = await fetchData('hobbies');
+  const hobbies: HobbiesProps[] = await fetchData('hobbies');
   if (hobbies.length === 0) {
     return (
       <NoDataAvailable>

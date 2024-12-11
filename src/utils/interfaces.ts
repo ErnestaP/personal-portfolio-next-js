@@ -83,7 +83,7 @@ export interface FilterProps {
   _dark: string;
 }
 
-export type Data = EducationData | ExperienceData | ProjectsData;
+export type Data = EducationData | ExperienceData | ProjectsData | Hobbies;
 
 export interface HasDateFromDateTo {
   dateFrom: TimeStampProps;
