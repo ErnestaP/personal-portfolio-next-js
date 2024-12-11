@@ -47,6 +47,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         xl: '18px',
         '2xl': '18px',
       }}
+      data-testid="experience-card"
     >
       <Card.Root size="sm" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
@@ -118,6 +119,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                 {skills.map((skill, index) => (
                   <Box
                     key={index}
+                    data-testid="skill-item"
                     flex={{
                       base: '1 1 calc(33.333% - 8px)',
                       sm: '1 1 calc(33.333% - 8px)',

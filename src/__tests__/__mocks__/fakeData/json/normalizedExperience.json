@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "title": "Software Engineer",
+    "team": "Backend Development",
+    "location": "San Francisco, CA",
+    "employer": "TechCorp",
+    "description": "Developed scalable backend systems and APIs for e-commerce platforms.",
+    "skills": ["Node.js", "Express", "MongoDB", "AWS"],
+    "dateFrom": { "seconds": 1622505600, "nanoseconds": 0 },
+    "dateTo": { "seconds": 1654041600, "nanoseconds": 0 },
+    "date": "June 2021"
+  },
+  {
+    "id": "2",
+    "title": "Data Analyst",
+    "team": "Analytics Team",
+    "location": "New York, NY",
+    "employer": "DataPros",
+    "description": "Analyzed and visualized large datasets to derive business insights.",
+    "skills": ["Python", "SQL", "Tableau", "Power BI"],
+    "dateFrom": { "seconds": 1590969600, "nanoseconds": 0 },
+    "dateTo": { "seconds": 1622505600, "nanoseconds": 0 },
+    "date": "June 2020"
+  },
+  {
+    "id": "3",
+    "title": "Product Manager",
+    "team": "Product Design",
+    "location": "Remote",
+    "employer": "InnoTech",
+    "description": "Led a team of designers and developers to create innovative software solutions.",
+    "skills": ["Agile", "Scrum", "JIRA", "Confluence"],
+    "dateFrom": { "seconds": 1567310400, "nanoseconds": 0 },
+    "dateTo": { "seconds": 1590969600, "nanoseconds": 0 },
+    "date": "September 2019"
+  },
+  {
+    "id": "4",
+    "title": "UX Designer",
+    "team": "User Experience",
+    "location": "Austin, TX",
+    "employer": "DesignWorks",
+    "description": "Created user-friendly interfaces for mobile and web applications.",
+    "skills": ["Figma", "Sketch", "Adobe XD", "CSS"],
+    "dateFrom": { "seconds": 1535760000, "nanoseconds": 0 },
+    "dateTo": { "seconds": 1567310400, "nanoseconds": 0 },
+    "date": "September 2018"
+  },
+  {
+    "id": "5",
+    "title": "DevOps Engineer",
+    "team": "Operations",
+    "location": "Seattle, WA",
+    "employer": "CloudOps",
+    "description": "Automated CI/CD pipelines and managed cloud infrastructure.",
+    "skills": ["Docker", "Kubernetes", "Terraform", "AWS"],
+    "dateFrom": { "seconds": 1504224000, "nanoseconds": 0 },
+    "dateTo": { "seconds": 1535760000, "nanoseconds": 0 },
+    "date": "September 2017"
+  }
+]
