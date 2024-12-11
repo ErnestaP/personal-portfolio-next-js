@@ -28,7 +28,11 @@ export interface ProjectsData {
 
 const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
   return (
-    <Stack align={'start'} width={'-webkit-fill-available'}>
+    <Stack
+      align={'start'}
+      width={'-webkit-fill-available'}
+      data-testid="projects-card"
+    >
       <Card.Root size="sm" fontFamily="cardFont" width={'100%'}>
         <Card.Header>
           <Heading fontFamily="cardFont">{title}</Heading>
@@ -63,6 +67,7 @@ const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
             {skillSet.map((skill, index) => {
               return (
                 <VStack
+                  data-testid={`skill-set-${index}`}
                   flex={1}
                   align={'start'}
                   justify={'space-between'}
@@ -82,7 +87,7 @@ const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
                       <Box fontWeight={600}>{skill.title}</Box>
                       {skill.gits &&
                         skill.gits.map((git, index) => (
-                          <Box key={index}>
+                          <Box key={index} data-testid="git-item">
                             <IconButton
                               variant="ghost"
                               onClick={() => window.open(git, '_blank')}
@@ -96,7 +101,7 @@ const ProjectCard: React.FC<ProjectsData> = ({ title, role, skillSet }) => {
                   </VStack>
                   <HStack gap={2}>
                     {skill.skills.map((skill, index) => (
-                      <Box key={index}>
+                      <Box key={index} data-testid="skill-item">
                         <Tag
                           size={{
                             base: 'sm',
