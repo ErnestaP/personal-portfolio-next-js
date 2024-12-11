@@ -1,6 +1,11 @@
 import 'core-js/stable/structured-clone';
 
-import { formatDate, normalizedData } from '@/utils/helpers';
+import {
+  formatDate,
+  normalizedData,
+  sortData,
+  fetchData,
+} from '@/utils/helpers';
 import { TimeStampProps } from '@/utils/interfaces';
 import { readFakeData } from '../__mocks__/fakeData';
 
@@ -89,5 +94,157 @@ describe('test normalizedData function', () => {
   });
 });
 
- // TODO: Tests for sortData
- // TODO: Tests for fetchData
+describe('test sortData function', () => {
+  it('sortData sorts data correctly: descending order', async () => {
+    const { fakeEducation } = await readFakeData();
+    const originalEducation = [...fakeEducation];
+    const sortedData = sortData([...fakeEducation]);
+    expect(sortedData).toEqual(expect.arrayContaining(originalEducation));
+    expect(sortedData[0].dateFrom.seconds).toBeGreaterThan(
+      sortedData[1].dateFrom.seconds
+    );
+    expect(sortedData[1].dateFrom.seconds).toBeGreaterThan(
+      sortedData[2].dateFrom.seconds
+    );
+  });
+  it('sortData does not sort the data if time stamps are equal', async () => {
+    const { fakeEducationSameDateFrom } = await readFakeData();
+    const originalEducation = [...fakeEducationSameDateFrom];
+    const sortedData = sortData([...fakeEducationSameDateFrom]);
+    expect(sortedData).toEqual(originalEducation);
+  });
+  it('sortData does not crash if the data is invalid', () => {
+    const invalidData = { dateFrom: { seconds: null, nanoseconds: null } };
+    const sortedData = sortData([invalidData] as any);
+    expect(sortedData).toEqual([invalidData]);
+  });
+  it('sortData does not crash if the data is empty array', () => {
+    const sortedData = sortData([] as any);
+    expect(sortedData).toEqual([]);
+  });
+  it('throws an error if data is not an array', () => {
+    expect(() => sortData({} as any)).toThrow(
+      'Input to sortData must be an array.'
+    );
+  });
+});
+
+describe('test fetchData function', () => {
+  it('sortData sorts data correctly: descending order', async () => {
+    const { fakeEducation } = await readFakeData();
+    const originalEducation = [...fakeEducation];
+    const sortedData = sortData([...fakeEducation]);
+    expect(sortedData).toEqual(expect.arrayContaining(originalEducation));
+    expect(sortedData[0].dateFrom.seconds).toBeGreaterThan(
+      sortedData[1].dateFrom.seconds
+    );
+    expect(sortedData[1].dateFrom.seconds).toBeGreaterThan(
+      sortedData[2].dateFrom.seconds
+    );
+  });
+});
+
+jest.mock('firebase/firestore', () => ({
+  getFirestore: jest.fn(),
+  collection: jest.fn(),
+  getDocs: jest.fn(),
+}));
+
+describe('fetchData', () => {
+  let mockGetDocs: jest.Mock;
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockGetDocs = jest.requireMock('firebase/firestore').getDocs;
+  });
+
+  it('fetches data without errors', async () => {
+    const mockData = [
+      { id: '1', data: () => ({ name: 'Doc 1' }) },
+      { id: '2', data: () => ({ name: 'Doc 2' }) },
+    ];
+    mockGetDocs.mockResolvedValueOnce({ empty: false, docs: mockData });
+
+    const result = await fetchData('testCollection');
+    expect(result).toEqual([
+      { id: '1', name: 'Doc 1' },
+      { id: '2', name: 'Doc 2' },
+    ]);
+  });
+
+  it('returns an empty array when no documents exist', async () => {
+    mockGetDocs.mockResolvedValueOnce({ empty: true, docs: [] });
+
+    const result = await fetchData('emptyCollection');
+    expect(result).toEqual([]);
+  });
+
+  it('handles Firestore errors gracefully', async () => {
+    mockGetDocs.mockRejectedValueOnce(new Error('Firestore error'));
+
+    await expect(fetchData('testCollection')).rejects.toThrow(
+      'Could not fetch data from testCollection'
+    );
+
+    expect(mockGetDocs).toHaveBeenCalled();
+  });
+
+  it('handles null or undefined fields in Firestore documents', async () => {
+    const mockData = [
+      { id: '1', data: () => ({ name: null }) },
+      { id: '2', data: () => ({ name: undefined }) },
+    ];
+    mockGetDocs.mockResolvedValueOnce({ empty: false, docs: mockData });
+
+    const result = await fetchData('testCollection');
+    expect(result).toEqual([
+      { id: '1', name: null },
+      { id: '2', name: undefined },
+    ]);
+  });
+
+  it('fetches data with nested fields', async () => {
+    const mockData = [
+      {
+        id: '1',
+        data: () => ({
+          name: 'Doc 1',
+          details: { title: 'title1', description: 'description1' },
+        }),
+      },
+      {
+        id: '2',
+        data: () => ({
+          name: 'Doc 2',
+          details: { title: 'title2', description: 'description2' },
+        }),
+      },
+    ];
+    mockGetDocs.mockResolvedValueOnce({ empty: false, docs: mockData });
+
+    const result = await fetchData('testCollection');
+    expect(result).toEqual([
+      {
+        id: '1',
+        name: 'Doc 1',
+        details: { title: 'title1', description: 'description1' },
+      },
+      {
+        id: '2',
+        name: 'Doc 2',
+        details: { title: 'title2', description: 'description2' },
+      },
+    ]);
+  });
+
+  it('logs a warning when no documents exist', async () => {
+    console.warn = jest.fn();
+    mockGetDocs.mockResolvedValueOnce({ empty: true, docs: [] });
+
+    const result = await fetchData('emptyCollection');
+    expect(console.warn).toHaveBeenCalledWith(
+      'No data found for collection: emptyCollection'
+    );
+    expect(result).toEqual([]);
+  });
+});

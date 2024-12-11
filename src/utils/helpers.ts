@@ -15,12 +15,16 @@ export const formatDate = (timestamp: TimeStampProps) => {
   }
 };
 
-export const sortData = <T extends HasDateFromDateTo>(data: T[]): T[] =>
-  data.sort((a, b) => {
-    const dateA = a.dateFrom?.seconds || 0;
-    const dateB = b.dateFrom?.seconds || 0;
+export const sortData = <T extends HasDateFromDateTo>(data: T[]): T[] => {
+  if (!Array.isArray(data)) {
+    throw new Error('Input to sortData must be an array.');
+  }
+  return data.sort((a, b) => {
+    const dateA = a.dateFrom?.seconds ?? 0;
+    const dateB = b.dateFrom?.seconds ?? 0;
     return dateB - dateA;
   });
+};
 
 export const normalizedData = <T extends HasDateFromDateTo>(
   sortedData: T[]
