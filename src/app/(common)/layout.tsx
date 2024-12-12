@@ -105,7 +105,19 @@ export default function ContentPageLayout(props: {
           <SideMenu buttons={buttons} />
         </Flex>
       </VStack>
-      <VStack overflowY={'scroll'} overflowX={'hidden'} flex={6}>
+      <VStack
+        overflowY={'scroll'}
+        overflowX={'hidden'}
+        flex={6}
+        paddingRight={{
+          base: 0,
+          sm: 0,
+          md: 0,
+          lg: 4,
+          xl: 4,
+          '2xl': 4,
+        }}
+      >
         {children}
       </VStack>
     </Flex>

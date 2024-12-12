@@ -21,9 +21,9 @@ export default async function Hobbies() {
     <Flex
       height={'100%'}
       direction={{
-        base: 'column',
-        sm: 'column',
-        md: 'column',
+        base: 'column-reverse',
+        sm: 'column-reverse',
+        md: 'column-reverse',
         lg: 'row',
         xl: 'row',
         '2xl': 'row',
@@ -44,6 +44,14 @@ export default async function Hobbies() {
           lg: '120ch',
           xl: '130ch',
           '2xl': '130ch',
+        }}
+        overflow={{
+          base: 'auto',
+          sm: 'auto',
+          md: 'auto',
+          lg: 'hidden',
+          xl: 'hidden',
+          '2xl': 'hidden',
         }}
       >
         {hobbies && hobbies.length !== 0 && hobbies[0].description}
