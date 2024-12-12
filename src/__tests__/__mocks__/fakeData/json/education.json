@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Northfield Institute of Technology",
+    "degree": "Bachelor of Applied Sciences",
+    "field": "Robotics Engineering",
+    "description": "Studied advanced robotics, automation systems, and human-machine interaction. Participated in multiple research projects.",
+    "image": "https://example.com/images/northfield-logo.png",
+    "dateFrom": {
+      "seconds": 1441065600,
+      "nanoseconds": 0
+    },
+    "dateTo": {
+      "seconds": 1559347200,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "title": "Westbridge University",
+    "degree": "Master of Computational Analysis",
+    "field": "Cybersecurity",
+    "description": "Focused on network security, cryptography, and ethical hacking. Worked on a thesis about threat detection using AI.",
+    "image": "https://example.com/images/westbridge-logo.png",
+    "dateFrom": {
+      "seconds": 1567296000,
+      "nanoseconds": 0
+    },
+    "dateTo": {
+      "seconds": 1622505600,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "title": "Lakeview Academy",
+    "degree": "Doctorate of Information Systems",
+    "field": "Data Visualization",
+    "description": "Conducted groundbreaking research in data storytelling and real-time visualization tools for complex datasets.",
+    "image": "https://example.com/images/lakeview-logo.png",
+    "dateFrom": {
+      "seconds": 1630454400,
+      "nanoseconds": 0
+    },
+    "dateTo": {
+      "seconds": 1746124800,
+      "nanoseconds": 0
+    }
+  }
+]

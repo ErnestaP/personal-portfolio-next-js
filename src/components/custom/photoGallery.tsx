@@ -103,7 +103,18 @@ const PhotoGallery: React.FC = () => {
   }, []);
 
   return (
-    <Flex flex={3} direction={'column'} position="relative">
+    <Flex
+      flex={{
+        base: '1',
+        sm: '1',
+        md: '1',
+        lg: '3',
+        xl: '3',
+        '2xl': '3',
+      }}
+      direction={'column'}
+      position="relative"
+    >
       <>
         <style>
           {`
