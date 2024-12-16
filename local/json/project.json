@@ -1,0 +1,130 @@
+[
+  {
+    "id": "1",
+    "title": "E-Commerce Platform Development",
+    "employer": "TechCorp",
+    "role": "Lead Developer",
+    "skillSet": [
+      {
+        "title": "Frontend Development",
+        "description": "Creating responsive user interfaces using modern frameworks.",
+        "skills": ["HTML", "CSS", "JavaScript", "React"],
+        "gits": [
+          "https://github.com/user/ecommerce-frontend",
+          "https://github.com/user/responsive-design"
+        ]
+      },
+      {
+        "title": "Backend Development",
+        "description": "Developing scalable APIs and managing backend services.",
+        "skills": ["Node.js", "Express", "MongoDB"],
+        "gits": [
+          "https://github.com/user/ecommerce-backend",
+          "https://github.com/user/api-authentication"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Data Visualization Dashboard",
+    "employer": "DataPros",
+    "role": "Data Analyst",
+    "skillSet": [
+      {
+        "title": "Data Analysis",
+        "description": "Analyzing large datasets and generating visual insights.",
+        "skills": ["Python", "Pandas", "SQL"],
+        "gits": [
+          "https://github.com/user/data-analysis",
+          "https://github.com/user/sales-dashboard"
+        ]
+      },
+      {
+        "title": "Visualization Tools",
+        "description": "Creating interactive visual dashboards for business insights.",
+        "skills": ["Tableau", "Power BI"],
+        "gits": [
+          "https://github.com/user/visualization-project",
+          "https://github.com/user/kpi-dashboard"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "AI Chatbot Project",
+    "employer": "InnoTech",
+    "role": "Machine Learning Engineer",
+    "skillSet": [
+      {
+        "title": "Natural Language Processing",
+        "description": "Building conversational models using NLP techniques.",
+        "skills": ["Python", "NLTK", "SpaCy"],
+        "gits": [
+          "https://github.com/user/chatbot-nlp",
+          "https://github.com/user/text-classification"
+        ]
+      },
+      {
+        "title": "Machine Learning",
+        "description": "Training predictive models using advanced algorithms.",
+        "skills": ["TensorFlow", "Keras"],
+        "gits": [
+          "https://github.com/user/chatbot-ml",
+          "https://github.com/user/sentiment-analysis"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Cloud Infrastructure Automation",
+    "employer": "CloudOps",
+    "role": "DevOps Engineer",
+    "skillSet": [
+      {
+        "title": "Infrastructure as Code",
+        "description": "Automating cloud deployments using infrastructure-as-code tools.",
+        "skills": ["Terraform", "AWS"],
+        "gits": [
+          "https://github.com/user/cloud-automation",
+          "https://github.com/user/terraform-scripts"
+        ]
+      },
+      {
+        "title": "Containerization and Orchestration",
+        "description": "Managing containerized applications at scale.",
+        "skills": ["Docker", "Kubernetes"],
+        "gits": [
+          "https://github.com/user/docker-setup",
+          "https://github.com/user/kubernetes-deployments"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Personal Portfolio Website",
+    "skillSet": [
+      {
+        "title": "Web Development",
+        "description": "Designing and building a personal portfolio to showcase projects.",
+        "skills": ["HTML", "CSS", "JavaScript", "React"],
+        "gits": [
+          "https://github.com/user/portfolio",
+          "https://github.com/user/react-portfolio"
+        ]
+      },
+      {
+        "title": "SEO Optimization",
+        "description": "Improving search engine visibility through optimized design.",
+        "skills": ["Google Analytics", "SEO"],
+        "gits": [
+          "https://github.com/user/seo-portfolio",
+          "https://github.com/user/analytics-integration"
+        ]
+      }
+    ]
+  }
+]
