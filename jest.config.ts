@@ -19,7 +19,7 @@ const customJestConfig = {
     'node_modules/(?!(some-esm-package|another-esm-package)/)',
   ],
 
-  testPathIgnorePatterns: ['/node_modules/', '/__mocks__/'],
+  testPathIgnorePatterns: ['/node_modules/', '/__mocks__/', 'testHelpers.ts'],
 };
 
 export default createJestConfig(customJestConfig);

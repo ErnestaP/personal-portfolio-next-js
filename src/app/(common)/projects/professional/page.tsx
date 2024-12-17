@@ -19,8 +19,8 @@ export default async function Professional() {
   }
   return (
     <CardWrapperWithColorMap>
-      {data.map((project: ProjectsData) => (
-        <Box key={project.id}>
+      {data.map((project: ProjectsData, index) => (
+        <Box key={index} width={'100%'}>
           <ProjectCard
             id={project.id}
             title={project.title}

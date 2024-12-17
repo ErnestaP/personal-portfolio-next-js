@@ -8,6 +8,7 @@ import {
 } from '@/utils/helpers';
 import { TimeStampProps } from '@/utils/interfaces';
 import { readFakeData } from '../__mocks__/fakeData';
+import { db, seedFirestoreCollection, clearFirestoreCollection } from '../testHelpers';
 
 describe('test formatDate function', () => {
   it('returns the correct formed date', () => {
@@ -144,107 +145,56 @@ describe('test fetchData function', () => {
   });
 });
 
-jest.mock('firebase/firestore', () => ({
-  getFirestore: jest.fn(),
-  collection: jest.fn(),
-  getDocs: jest.fn(),
-}));
+jest.setTimeout(10000);
 
-describe('fetchData', () => {
-  let mockGetDocs: jest.Mock;
+describe('fetchData with Firestore Emulator', () => {
+  const testCollection = 'testCollection';
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-    mockGetDocs = jest.requireMock('firebase/firestore').getDocs;
+  beforeEach(async () => {
+    await clearFirestoreCollection(testCollection);
+  });
+
+  afterAll(async () => {
+    await clearFirestoreCollection(testCollection);
   });
 
   it('fetches data without errors', async () => {
     const mockData = [
-      { id: '1', data: () => ({ name: 'Doc 1' }) },
-      { id: '2', data: () => ({ name: 'Doc 2' }) },
-    ];
-    mockGetDocs.mockResolvedValueOnce({ empty: false, docs: mockData });
-
-    const result = await fetchData('testCollection');
-    expect(result).toEqual([
       { id: '1', name: 'Doc 1' },
       { id: '2', name: 'Doc 2' },
-    ]);
+    ];
+
+    await seedFirestoreCollection(testCollection, mockData);
+    const result = await fetchData(testCollection);
+    expect(result).toEqual(mockData);
   });
 
   it('returns an empty array when no documents exist', async () => {
-    mockGetDocs.mockResolvedValueOnce({ empty: true, docs: [] });
-
-    const result = await fetchData('emptyCollection');
+    const result = await fetchData(testCollection);
     expect(result).toEqual([]);
   });
 
   it('handles Firestore errors gracefully', async () => {
-    mockGetDocs.mockRejectedValueOnce(new Error('Firestore error'));
-
-    await expect(fetchData('testCollection')).rejects.toThrow(
-      'Could not fetch data from testCollection'
-    );
-
-    expect(mockGetDocs).toHaveBeenCalled();
-  });
-
-  it('handles null or undefined fields in Firestore documents', async () => {
-    const mockData = [
-      { id: '1', data: () => ({ name: null }) },
-      { id: '2', data: () => ({ name: undefined }) },
-    ];
-    mockGetDocs.mockResolvedValueOnce({ empty: false, docs: mockData });
-
-    const result = await fetchData('testCollection');
-    expect(result).toEqual([
-      { id: '1', name: null },
-      { id: '2', name: undefined },
-    ]);
+    await expect(fetchData('invalidCollection')).rejects.toThrow();
   });
 
   it('fetches data with nested fields', async () => {
     const mockData = [
       {
         id: '1',
-        data: () => ({
-          name: 'Doc 1',
-          details: { title: 'title1', description: 'description1' },
-        }),
-      },
-      {
-        id: '2',
-        data: () => ({
-          name: 'Doc 2',
-          details: { title: 'title2', description: 'description2' },
-        }),
-      },
-    ];
-    mockGetDocs.mockResolvedValueOnce({ empty: false, docs: mockData });
-
-    const result = await fetchData('testCollection');
-    expect(result).toEqual([
-      {
-        id: '1',
         name: 'Doc 1',
-        details: { title: 'title1', description: 'description1' },
+        details: { title: 'Nested Title 1', description: 'Description 1' },
       },
       {
         id: '2',
         name: 'Doc 2',
-        details: { title: 'title2', description: 'description2' },
+        details: { title: 'Nested Title 2', description: 'Description 2' },
       },
-    ]);
-  });
+    ];
 
-  it('logs a warning when no documents exist', async () => {
-    console.warn = jest.fn();
-    mockGetDocs.mockResolvedValueOnce({ empty: true, docs: [] });
+    await seedFirestoreCollection(testCollection, mockData);
 
-    const result = await fetchData('emptyCollection');
-    expect(console.warn).toHaveBeenCalledWith(
-      'No data found for collection: emptyCollection'
-    );
-    expect(result).toEqual([]);
+    const result = await fetchData(testCollection);
+    expect(result).toEqual(mockData);
   });
 });

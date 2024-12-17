@@ -20,14 +20,17 @@ export default async function Education() {
 
   return (
     <>
-      {normalizedAndSortedData.map((university) => (
-        <Box key={university.title}>
+      {normalizedAndSortedData.map((university, index) => (
+        <Box key={index}>
           <EducationCard
             title={university.title}
             degree={university.degree}
             field={university.field}
             description={university.description}
-            image={educationImagesMapping[university.title]}
+            image={
+              educationImagesMapping[university.title] ||
+              educationImagesMapping.default
+            }
             date={university.date}
           />
         </Box>

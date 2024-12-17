@@ -20,8 +20,8 @@ export default async function Personal() {
 
   return (
     <CardWrapperWithColorMap>
-      {data.map((project: ProjectsData) => (
-        <Box key={project.id} width={'100%'}>
+      {data.map((project: ProjectsData, index) => (
+        <Box key={index} width={'100%'}>
           <ProjectCard
             id={project.id}
             title={project.title}

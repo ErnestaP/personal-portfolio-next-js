@@ -21,8 +21,8 @@ export default async function Experience() {
   const normalizedAndSortedData = sortData(normalizedData(data));
   return (
     <CardWrapperWithColorMap>
-      {normalizedAndSortedData.map((experience) => (
-        <Box flex={1} key={experience.id}>
+      {normalizedAndSortedData.map((experience, index) => (
+        <Box flex={1} key={index} width={'100%'}>
           <ExperienceCard
             employer={experience.employer}
             team={experience.team}
@@ -30,7 +30,10 @@ export default async function Experience() {
             date={experience.date}
             location={experience.location}
             description={experience.description}
-            image={experienceImagesMapping[experience.employer]}
+            image={
+              experienceImagesMapping[experience.employer] ||
+              experienceImagesMapping.default
+            }
             skills={experience.skills}
           />
         </Box>
