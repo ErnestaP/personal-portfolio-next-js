@@ -22,19 +22,6 @@ export interface EducationData {
   dateTo: TimeStampProps;
 }
 
-export interface EducationNormalizedData extends EducationData {
-  date: string;
-}
-
-export interface EducationCardProps {
-  title: string;
-  degree: string;
-  field: string;
-  description: string;
-  image: string;
-  date: string;
-}
-
 export interface SideMenuButtonsProps {
   label: string;
   href: string;
@@ -60,20 +47,6 @@ export interface ExperienceData {
   skills: string[];
   dateFrom: TimeStampProps;
   dateTo: TimeStampProps;
-}
-export interface ExperienceNormalizedData extends ExperienceData {
-  date: string;
-}
-
-export interface ExperienceCardProps {
-  employer: string;
-  team?: string;
-  title: string;
-  date: string;
-  location: string;
-  description: string;
-  image: string;
-  skills: string[];
 }
 
 export interface TimeStampProps {
@@ -110,11 +83,13 @@ export interface FilterProps {
   _dark: string;
 }
 
-export type Data = EducationData & ExperienceData & ProjectsData;
-export type NormalizedData = EducationNormalizedData & ExperienceNormalizedData;
+export type Data = EducationData | ExperienceData | ProjectsData | Hobbies;
 
-export interface DataForSorting {
+export interface HasDateFromDateTo {
   dateFrom: TimeStampProps;
   dateTo: TimeStampProps;
-  [key: string]: any;
+}
+
+export interface HasDate {
+  date: string;
 }
