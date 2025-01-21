@@ -1,5 +1,15 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { emulatorConfig as devEmulator } from './firebaseConfig.dev';
+
+export interface EmulatorConfig {
+  firestore: {
+    host: string;
+    port: number;
+  };
+  [key: string]: {
+    host: string;
+    port: number;
+  };
+}
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,7 +20,13 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-export { db };
+const env = process.env.NODE_ENV;
+
+let emulatorConfig: EmulatorConfig;
+
+if (env === 'development') {
+  emulatorConfig = devEmulator;
+}
+
+export { firebaseConfig, emulatorConfig };

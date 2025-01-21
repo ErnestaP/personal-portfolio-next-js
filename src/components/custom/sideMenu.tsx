@@ -3,7 +3,7 @@ import React from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { VStack, Box, Button } from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react';
 
 import { FilterProps, SideMenuButtonsProps } from '@/utils/interfaces';
 
@@ -43,36 +43,54 @@ function SideMenuButtons(props: {
   );
 }
 
-export function SideMenu(props: {
-  buttons: SideMenuButtonsProps[];
-  onlyButtons?: boolean;
-}) {
+export function SideMenu(props: { buttons: SideMenuButtonsProps[] }) {
   return (
-    <>
-      {props.onlyButtons ? (
-        <SideMenuButtons buttons={props.buttons} />
-      ) : (
-        <VStack
-          backgroundImage={"url('/SideFaceInvert.png')"}
-          backgroundPosition="center"
-          filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
-          backgroundRepeat="no-repeat"
-          backgroundColor={'rgba(255, 255, 255, 0.9)'}
-          border={"1px #ebedea solid"}
-          backgroundBlendMode="overlay"
-          backgroundSize="cover"
-          gap={{ base: '3', md: '3', lg: '5', xl: '5', '2xl': '5' }}
-          padding={4}
-          height={'100%'}
-          width="auto"
-          borderRadius={8}
-        >
-          <SideMenuButtons
-            buttons={props.buttons}
-            filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
-          />
-        </VStack>
-      )}
-    </>
+    <Flex
+      flexDir={{
+        base: 'row',
+        sm: 'row',
+        md: 'row',
+        lg: 'column',
+        xl: 'column',
+        '2xl': 'column',
+      }}
+      align={'center'}
+      backgroundImage={{
+        base: '',
+        sm: '',
+        md: '',
+        lg: "url('/SideFaceInvert.png')",
+        xl: "url('/SideFaceInvert.png')",
+      }}
+      backgroundPosition="center"
+      filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
+      backgroundRepeat="no-repeat"
+      backgroundColor={{
+        base: 'transparent',
+        sm: 'transparent',
+        md: 'transparent',
+        lg: 'rgba(255, 255, 255, 0.9)',
+        xl: 'rgba(255, 255, 255, 0.9)',
+      }}
+      border={{
+        base: 'none',
+        sm: 'none',
+        md: 'none',
+        lg: '1px #ebedea solid',
+        xl: '1px #ebedea solid',
+      }}
+      backgroundBlendMode="overlay"
+      backgroundSize="cover"
+      gap={{ base: '3', md: '3', lg: '5', xl: '5', '2xl': '5' }}
+      padding={{ base: 2, md: 2, lg: 4, xl: 4, '2xl': 5 }}
+      height={'100%'}
+      width="auto"
+      borderRadius={8}
+    >
+      <SideMenuButtons
+        buttons={props.buttons}
+        filter={{ base: 'invert(0)', _dark: 'invert(1)' }}
+      />
+    </Flex>
   );
 }

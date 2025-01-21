@@ -27,13 +27,9 @@ const customConfig = defineConfig({
       color: '#000',
       _dark: {
         backgroundColor: '#000',
-        color: 'white',
+        color: '#FFF',
       },
     },
-  },
-  fonts: {
-    heading: museoModerno.style.fontFamily,
-    body: museoModerno.style.fontFamily,
   },
   theme: {
     tokens: {
@@ -43,15 +39,17 @@ const customConfig = defineConfig({
         active: { value: '#EFC946' },
       },
       fonts: {
+        heading: { value: museoModerno.style.fontFamily },
+        body: { value: museoModerno.style.fontFamily },
         initialTitle: { value: poppins.style.fontFamily },
         cardFont: { value: khula.style.fontFamily },
       },
       fontSizes: {
-        smallTitle: '2.4rem',
-        mediumTitle: '3.125rem',
-        largeTitle: '3.75rem',
-        extraLargeTitle: '5rem',
-        extraExtraLargeTitle: '7.5rem',
+        smallTitle: { value: '2.4rem' },
+        mediumTitle: { value: '3.125rem' },
+        largeTitle: { value: '3.75rem' },
+        extraLargeTitle: { value: '5rem' },
+        extraExtraLargeTitle: { value: '7.5rem' },
       },
     },
   },
