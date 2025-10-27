@@ -2,11 +2,16 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/firebaseApp';
 import { Data, HasDateFromDateTo, TimeStampProps } from './interfaces';
 
-export const formatDate = (timestamp: TimeStampProps) => {
+export const formatDate = (timestamp: TimeStampProps | string) => {
   try {
-    if (!timestamp || typeof timestamp.seconds !== 'number') {
+    if (typeof timestamp === 'string' && timestamp.toLowerCase() === 'present') {
+      return 'Present';
+    }
+
+    if (!timestamp || typeof timestamp !== 'object' || typeof timestamp.seconds !== 'number') {
       throw new Error('Invalid timestamp object');
     }
+
     const date = new Date(timestamp.seconds * 1000);
     return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
   } catch (e) {
