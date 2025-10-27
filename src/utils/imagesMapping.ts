@@ -9,5 +9,6 @@ export const educationImagesMapping: ImagesMappingProps = {
 export const experienceImagesMapping: ImagesMappingProps = {
   CERN: '/CMS_Detector_Transparent.png',
   Dekbera: '/heart_woman.png',
+  'Philico SA': '/cubist_3_people.png',
   default: '/heart_woman.png',
 };
