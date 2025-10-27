@@ -46,6 +46,8 @@ const skillToGroupMap: SkillToGroupMap = {
   Collaboration: 'Communication and Collaboration',
   'Presentation Skills': 'Communication and Collaboration',
   'Team Work': 'Communication and Collaboration',
+  'ShadCN': 'Programming and Development',
+  'Google Cloud': 'Programming and Development'
 };
 
 export function getColorBySkill(skill: string): string | null {
